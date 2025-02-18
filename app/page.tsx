@@ -14,7 +14,7 @@ type News = {
 
 async function getNews(): Promise<News[]> {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
+    const res = await fetch("https://jsonservertrt.onrender.com/news", {
       cache: "no-store",
     });
     if (!res.ok) throw new Error("Failed to fetch news");
