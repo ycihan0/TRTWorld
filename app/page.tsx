@@ -1,4 +1,4 @@
-// app/page.tsx
+import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 
 type News = {
@@ -13,26 +13,25 @@ type News = {
   chosen: boolean;
 };
 
-// Server Component olarak async fonksiyon
 export default async function Home() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
-    cache: "no-store",  // Her çağrıda veri yenilensin
+    cache: "no-store",
   });
 
   if (!res.ok) {
     console.error("Error fetching news");
-    return (
-      <div className={styles.page}>
-        <p>Veri bulunamadı</p>
-      </div>
-    );
+    notFound();
   }
 
   const newsList: News[] = await res.json();
 
   return (
     <div className={styles.page}>
-      {newsList.length > 0 ? <h1>{newsList[0].title}</h1> : <p>Veri bulunamadı</p>}
+      {newsList.length > 0 ? (
+        <h1>{newsList[0].title}</h1>
+      ) : (
+        <p>Veri bulunamadı</p>
+      )}
     </div>
   );
 }
