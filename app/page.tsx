@@ -14,7 +14,7 @@ type News = {
 
 async function getNews(): Promise<News[]> {
   try {
-    const res = await fetch("https://jsonservertrt.onrender.com/news", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
       cache: "no-store",
     });
     if (!res.ok) throw new Error("Failed to fetch news");
@@ -27,5 +27,5 @@ async function getNews(): Promise<News[]> {
 
 export default async function Home() {
   const newsList = await getNews();
-  return <div className={styles.page}>{newsList[0].title}</div>;
+  return <div className={styles.page}>{newsList.length>0? newsList[0].title:"there is no data"}</div>;
 }
