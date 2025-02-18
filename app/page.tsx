@@ -1,3 +1,4 @@
+// app/page.tsx
 import styles from "./page.module.css";
 
 type News = {
@@ -12,20 +13,26 @@ type News = {
   chosen: boolean;
 };
 
-async function getNews(): Promise<News[]> {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
-      cache: "no-store",
-    });
-    if (!res.ok) throw new Error("Failed to fetch news");
-    return await res.json();
-  } catch (error) {
-    console.error("Error fetching news:", error);
-    return [];
-  }
-}
-
+// Server Component olarak async fonksiyon
 export default async function Home() {
-  const newsList = await getNews();
-  return <div className={styles.page}>{newsList.length>0? newsList[0].title:"there is no data"}</div>;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
+    cache: "no-store",  // Her çağrıda veri yenilensin
+  });
+
+  if (!res.ok) {
+    console.error("Error fetching news");
+    return (
+      <div className={styles.page}>
+        <p>Veri bulunamadı</p>
+      </div>
+    );
+  }
+
+  const newsList: News[] = await res.json();
+
+  return (
+    <div className={styles.page}>
+      {newsList.length > 0 ? <h1>{newsList[0].title}</h1> : <p>Veri bulunamadı</p>}
+    </div>
+  );
 }
