@@ -18,23 +18,25 @@ const MainNewsFeed: React.FC = () => {
         </div>
       </div>
       <div className={styles.container}>
-        {/* Sol Sütun (Ana Haber) */}
         <div className={styles.mainNews}>
           <div className={styles.mainImage}>
-            <Image src="/images/biden.jpg" alt="" width={600} height={400} />
+            <Image src="/images/biden.jpg" alt="" width={664} height={373} />
           </div>
           <span className={styles.tag}>AZERBAIJAN-ARMENIA DISPUTE</span>
-          <h1 className={styles.mainTitle}>
-            Azerbaijan Issues Final Warning To Armenia In Karabakh Clashes
+          <h1 className={styles.mainTitle}>Azerbaijan Issues Final Warning To Armenia In Karabakh Clashes
           </h1>
           <div className={styles.relatedStories}>
+            <span>RELATED STORIES</span>
+            <div className={styles.relatedStoriesTitles}>
             <a href="#">Calls grow for Azerbaijan, Armenia to end fighting</a>
-            <a href="#">Turkish lawmakers condemn Armenian attacks</a>
-            <a href="#">Azerbaijan downs Armenian drone</a>
+            <a href="#" style={{paddingLeft:"24px"}}>Turkish lawmakers condemn Armenian attacks</a>
+            <a href="#" style={{paddingLeft:"24px", border:"none"}}>Azerbaijan downs Armenian drone</a>
+            </div>
+      
           </div>
         </div>
 
-        {/* Sağ Sütun (Yan Haberler) */}
+        
         <div className={styles.sideNews}>
           <div className={styles.newsItem}>
             <h3>The importance of Russia’s growing footprint in Iraq</h3>
