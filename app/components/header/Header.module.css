@@ -1,4 +1,126 @@
-.container {
-  height: 48px;
+.header {
   background-color: #000000;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1440px;
+  height: 100%; 
+  font-size: 16px;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+ .logo {
+  font-style: normal;
+
+  font-weight: bold;
+  color: white;
+}
+
+.logo span {
+  color: #00aaff;
+}
+
+.nav {
+  /* flex-grow: 1; */
+} 
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  padding: 10px 15px;
+  transition: background 0.3s ease-in-out;
+}
+
+.menuItem:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.menuItemLive {
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  min-width: 150px;
+  padding: 10px 0;
+}
+
+.dropdown li {
+  padding: 10px 15px;
+  color: black;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dropdown li:hover {
+  background: #f4f4f4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    background: black;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    display: none;
+  }
+
+  .menuItem {
+    text-align: center;
+    width: 100%;
+  }
+
+  .menuItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown {
+    position: static;
+    background: none;
+    box-shadow: none;
+  }
+
+  .dropdown li {
+    color: white;
+    padding: 8px;
+  }
+
+  .menuItemLive {
+    text-align: center;
+    display: block;
+  }
 }
