@@ -42,10 +42,10 @@
   border-right: solid #e1e6eb 1px;
 }
 
-.mainImage {
+.mainImage img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  max-width: 664px;
 }
 
 .tag {
@@ -92,32 +92,107 @@
 }
 
 .relatedStories a:hover {
-    opacity: 0.6; /* Hover durumunda saydamlığı azaltır */
+  opacity: 0.6;
 }
 
-/* Yan Haberler */
 .sideNews {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  padding: 0 24px;
+  border-right: solid #e1e6eb 1px;
 }
 
 .newsItem {
-  padding: 10px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  padding-bottom: 12px;
+  border-bottom: solid #e1e6eb 1px;
+}
+
+.newsItem img {
+  width: 100%;
+  height: auto;
+  max-width: 296px;
 }
 
 .newsItem h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Noto Serif", serif;
+  margin: 12px 0;
 }
 
 .newsItem p {
   font-size: 14px;
-  color: #666;
+  color: #000000;
+  font-family: "Noto Serif", serif;
 }
 
+.sidebar {
+  width: 100%;
+  max-width: 296px;
+  font-family: "Noto Serif", serif;
+  padding-left: 24px;
+}
+
+.avatar img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 96px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 24px;
+}
+.sidebarItem:not(:first-child) {
+  padding: 24px 0;
+}
+
+.newsContent {
+  flex: 1;
+}
+
+.author {
+  display: block;
+  font-size: 12px;
+  color: #a0a5aa;
+  font-weight: bold;
+  font-family: "Poppins", serif;
+}
+
+.sidebarTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  margin-top: 3px;
+}
+
+.categoryItem {
+  padding: 24px 0;
+  min-height: 72px;
+  border-bottom: solid #e1e6eb 1px;
+
+}
+.categoryItem:last-child {
+    border-bottom: none;
+  }
+
+.category {
+  font-size: 12px;
+  color: #0089CC;
+  text-transform: uppercase;
+  font-family: "Poppins", serif;
+
+}
+
+.categoryTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+
+}
 /* Popüler Haberler */
 .popularNews {
   grid-column: span 2;
@@ -154,14 +229,33 @@
 
 /* Responsive Tasarım */
 @media (max-width: 900px) {
-  .container {
-    grid-template-columns: 1fr;
+    .container {
+      grid-template-columns: 1fr; /* Tek sütuna geç */
+    }
+  
+    /* Büyük haber alanını ilk sırada tam genişlikte göster */
+    .mainNews {
+      grid-column: 1;
+      border-right: none; /* İstersen sağ sınırı kaldırabilirsin */
+      padding-right: 0;   /* Sağdan boşluğu kaldırabilirsin */
+    }
+  
+    /* sideNews ve sidebar'ı alt alta göstermek istersen */
+    .sideNews,
+    .sidebar {
+    grid-column: 1;     /* Grid yerine block yap */
+      border-right: none; /* İstersen sağ sınırı kaldır */
+      padding: 0;
+    }
+  
+    /* Eğer .popularNews da varsa ve geniş ekranda 2 sütun kaplıyorsa,
+       mobilde tek sütuna düşürmek için */
+    .popularNews {
+      grid-column: 1;
+      margin-top: 16px; /* Üste biraz boşluk ekleyebilirsin */
+    }
   }
-
-  .popularNews {
-    grid-column: span 1;
-  }
-}
+  
 
 @media (max-width: 600px) {
   .mainTitle {
