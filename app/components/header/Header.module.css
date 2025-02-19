@@ -82,7 +82,7 @@
   margin-left: 8px;
 }
 
-.dropdown {
+/* .dropdown {
   background-color: #f3f2ea;
   position: sticky;
   z-index: 1000;
@@ -92,7 +92,7 @@
   justify-content: end;
   padding-right: 120px;
   font-size: 12px;
-}
+} */
 
 .dropdown li {
   padding: 10px 15px;
@@ -112,9 +112,58 @@
   height: 48px;
   justify-content: center;
   align-items: center;
-  }
+}
 
-/* Responsive */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fdfdfd;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalContent {
+  background: #090a0a;
+  padding: 40px 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.modalMenu {
+  list-style: none;
+  margin-top: 10px;
+  padding-left: 120px;
+}
+
+.modalMenu span {
+  position: relative;
+  top: 2px;
+}
+
+.modalMenuItem {
+  font-size: 12px;
+  color: white;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modalMenuItem span {
+  padding-top: 2px;
+}
+
+.modalMenuItem:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 @media (max-width: 800px) {
   .menuItem {
     display: none;

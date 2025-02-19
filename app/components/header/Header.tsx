@@ -1,9 +1,11 @@
-// "use client";
+"use client";
 import styles from "./Header.module.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbPointFilled } from "react-icons/tb";
 import { HiOutlineSearch } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { GrClose } from "react-icons/gr";
+import { useState } from "react";
 // import { useState } from "react";
 
 // type DropdownMenu = string | null;
@@ -14,7 +16,7 @@ const Header: React.FC = () => {
   // const toggleDropdown = (menu: DropdownMenu) => {
   //   setOpenDropdown(openDropdown === menu ? null : menu);
   // };
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
       <header className={styles.header}>
@@ -65,13 +67,54 @@ const Header: React.FC = () => {
               <li className={styles.menuItemSearch}>
                 <HiOutlineSearch />
               </li>
-              <li className={styles.menuItemButton} >
-                <RxHamburgerMenu />
+              <li
+                className={styles.menuItemButton}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <GrClose /> : <RxHamburgerMenu />}
               </li>
             </ul>
           </nav>
         </div>
       </header>
+      {isMenuOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <ul className={styles.modalMenu}>
+              <li className={styles.modalMenuItem}>
+                <span className={styles.menuItemLive}>
+                  <TbPointFilled />
+                </span>
+                LIVE
+              </li>
+              <li className={styles.modalMenuItem}>
+                NEWS
+                <span>
+                  <IoIosArrowDown />
+                </span>
+              </li>
+              <li className={styles.modalMenuItem}>
+                FEATURES
+                <span>
+                  <IoIosArrowDown />
+                </span>
+              </li>
+              <li className={styles.modalMenuItem}>
+                TOPİCS
+                <span>
+                  <IoIosArrowDown />
+                </span>
+              </li>
+              <li className={styles.modalMenuItem}>
+                VİDEO
+                <span>
+                  <IoIosArrowDown />
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
       {/* {openDropdown === "news" && (
         <ul className={styles.dropdown}>
           <li>LASTEST</li>
