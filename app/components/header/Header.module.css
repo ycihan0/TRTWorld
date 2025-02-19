@@ -47,7 +47,7 @@
   font-weight: bold;
   cursor: pointer;
   position: relative;
-  transition: background 0.3s ease-in-out;
+  /* transition: background 0.3s ease-in-out; */
   display: flex;
   align-items: center;
   gap: 4px;

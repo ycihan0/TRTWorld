@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
+import MainNewsFeed from "./components/mainNewsFeed/MainNewsFeed";
 
 type News = {
   id: string;
@@ -27,11 +28,7 @@ export default async function Home() {
 
   return (
     <div className={styles.container}>
-      {newsList.length > 0 ? (
-        <h1>{newsList[0].title}</h1>
-      ) : (
-        <p>Veri bulunamadı</p>
-      )}
+      <MainNewsFeed/>
     </div>
   );
 }

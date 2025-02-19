@@ -1,11 +1,11 @@
 "use client";
 import styles from "./Header.module.css";
+import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbPointFilled } from "react-icons/tb";
 import { HiOutlineSearch } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { GrClose } from "react-icons/gr";
-import { useState } from "react";
 // import { useState } from "react";
 
 // type DropdownMenu = string | null;
