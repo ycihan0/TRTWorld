@@ -15,7 +15,7 @@
   align-items: center;
   width: 1440px;
   height: 100%;
-   padding-left: 120px;
+  padding-left: 120px;
   padding-right: 120px;
 }
 
@@ -37,97 +37,89 @@
 .menu {
   list-style: none;
   display: flex;
-  gap: 16px;
   margin: 0;
   padding: 0;
 }
 
 .menuItem {
-  color: white;
+  color: #fdfdfd;
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   position: relative;
   transition: background 0.3s ease-in-out;
-  display: flex; 
-  align-items: center; 
-  gap: 4px; 
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 48px;
+  padding: 0 8px;
 }
 
-.menuItem span{
+.menuItem span {
   display: flex;
-  align-items: center; 
+  align-items: center;
   margin-top: 2px;
 }
 
 .menuItem:hover {
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  
-
 }
 
 .menuItemLive {
-  color: #FB2040;
-font-size: 14px;
+  color: #fb2040;
+  font-size: 14px;
+}
+
+.menuItemSearch {
+  background-color: #0089cc;
+  color: #fdfdfd;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 8px;
 }
 
 .dropdown {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  min-width: 150px;
-  padding: 10px 0;
+  background-color: #f3f2ea;
+  position: sticky;
+  z-index: 1000;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: end;
+  padding-right: 120px;
+  font-size: 12px;
 }
 
 .dropdown li {
   padding: 10px 15px;
-  color: black;
+  color: #494f60;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 .dropdown li:hover {
-  background: #f4f4f4;
+  color: #0089cc;
 }
 
+.menuItemButton {
+  display: none;
+  color: #fdfdfd;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  }
+
 /* Responsive */
-@media (max-width: 768px) {
-  .menu {
-    flex-direction: column;
-    background: black;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
+@media (max-width: 800px) {
+  .menuItem {
     display: none;
   }
-
-  .menuItem {
-    text-align: center;
-    width: 100%;
-  }
-
-  .menuItem:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  .dropdown {
-    position: static;
-    background: none;
-    box-shadow: none;
-  }
-
-  .dropdown li {
-    color: white;
-    padding: 8px;
-  }
-
-  .menuItemLive {
-    text-align: center;
-    display: block;
+  .menuItemButton {
+    display: flex;
   }
 }
