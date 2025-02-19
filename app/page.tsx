@@ -26,7 +26,7 @@ export default async function Home() {
   const newsList: News[] = await res.json();
 
   return (
-    <div className={styles.page}>
+    <div className={styles.container}>
       {newsList.length > 0 ? (
         <h1>{newsList[0].title}</h1>
       ) : (
