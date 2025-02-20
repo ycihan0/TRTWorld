@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./MainNewsFeed.module.css";
+import PopularNews from "../popularNews/PopularNews";
 
 const newsData = [
   {
@@ -60,12 +61,8 @@ const MainNewsFeed: React.FC = () => {
             <span>RELATED STORIES</span>
             <div className={styles.relatedStoriesTitles}>
               <a href="#">Calls grow for Azerbaijan, Armenia to end fighting</a>
-              <a href="#" style={{ paddingLeft: "24px" }}>
-                Turkish lawmakers condemn Armenian attacks
-              </a>
-              <a href="#" style={{ paddingLeft: "24px", border: "none" }}>
-                Azerbaijan downs Armenian drone
-              </a>
+              <a href="#">Turkish lawmakers condemn Armenian attacks</a>
+              <a href="#">Azerbaijan downs Armenian drone</a>
             </div>
           </div>
         </div>
@@ -118,26 +115,7 @@ const MainNewsFeed: React.FC = () => {
           ))}
         </div>
       </div>
-      {/* Popüler Haberler */}
-      <div className={styles.popularNews}>
-        <h2>Popular Today</h2>
-        <div className={styles.popularItem}>
-          <span className={styles.number}>1</span>
-          <div>
-            <span className={styles.category}>OPINION</span>
-            <p>
-              Nepal should stop selling its youth to Indian and British armies
-            </p>
-          </div>
-        </div>
-        <div className={styles.popularItem}>
-          <span className={styles.number}>2</span>
-          <div>
-            <span className={styles.category}>MAGAZINE</span>
-            <p>Big banks moved trillions despite knowing money was illegal</p>
-          </div>
-        </div>
-      </div>
+      <PopularNews />
     </>
   );
 };
