@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 import MainNewsFeed from "./components/mainNewsFeed/MainNewsFeed";
+import NewsCard from "./components/newsCard/NewsCard";
 
 // type News = {
 //   id: string;
@@ -27,8 +28,13 @@ export default async function Home() {
   // const newsList: News[] = await res.json();
 
   return (
-    <div className={styles.container}>
-      <MainNewsFeed/>
-    </div>
+    <>
+      <div className={styles.container}>
+        <MainNewsFeed />
+        
+      </div>
+      <NewsCard />
+     
+    </>
   );
 }
