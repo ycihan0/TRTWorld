@@ -15,6 +15,7 @@
 
 .newsList {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding-top: 24px;
 
@@ -27,9 +28,7 @@
   position: relative;
   border-right: solid #e1e6eb 1px;
   padding-left: 24px;
-  min-height: 132px;
-
- 
+  min-height: 132px; 
 }
 .newsItem:last-child {
   border-right: none;
@@ -66,4 +65,37 @@
    font-family: "Noto Serif", serif
 }
 
+@media (max-width: 980px) {
+  .newsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+   
+  }
 
+  .newsItem:nth-child(2n) {
+
+    border-right: none;
+  }
+
+  
+  .newsItem:nth-child(3n) {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .newsList {
+      grid-template-columns: 1fr; 
+   
+  }
+
+  .newsItem {
+
+    border-right: none;
+  }
+
+  
+  .newsItem {
+    padding-left: 0;
+  }
+}
