@@ -1,53 +1,15 @@
 import Image from "next/image";
 import styles from "./MainNewsFeed.module.css";
 import PopularNews from "../popularNews/PopularNews";
+import TopicHeader from "../topicHeader/TopicHeader";
+import Sidebar from "../sidebar/Sidebar";
 
-const newsData = [
-  {
-    author: "Carel Du Marchie Sarvaas",
-    title: "Why an effective vaccine is just the start of disease control",
-    image: "/profile1.jpg",
-  },
-  {
-    author: "Giorgio Cafiero",
-    title:
-      "This African nation could be the next to normalise ties with Israel",
-    image: "/profile2.jpg",
-  },
-];
 
-const categories = [
-  { name: "AFRICA", title: "Hundreds Of Prisoners Escape Uganda Prison" },
-  {
-    name: "LIFE",
-    title: "Over 30M People Infected With Covid-19 – Latest Updates",
-  },
-  {
-    name: "ASIA",
-    title: "Robot Helps India's Virus Patients Speak To Loved Ones",
-  },
-  {
-    name: "AMERICAS",
-    title: "Hurricane Sally Drenches US Gulf Coast, Trapping Hundreds",
-  },
-];
 
 const MainNewsFeed: React.FC = () => {
   return (
     <>
-      <div className={styles.topicHeader}>
-        <span className={styles.topicTitle}>TOPICS</span>
-        <div className={styles.topics}>
-          <span className={styles.separator}>|</span>
-          <a href="#">AZERBAIJAN-ARMENIA DISPUTE</a>
-          <span className={styles.separator}>|</span>
-          <a href="#">COVID-19</a>
-          <span className={styles.separator}>|</span>
-          <a href="#">EASTERN MEDITERRANEAN</a>
-          <span className={styles.separator}>|</span>
-          <a href="#">MY TURKEY</a>
-        </div>
-      </div>
+      <TopicHeader />
       <div className={styles.container}>
         <div className={styles.mainNews}>
           <div className={styles.mainImage}>
@@ -92,28 +54,7 @@ const MainNewsFeed: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className={styles.sidebar}>
-          {newsData.map((news, index) => (
-            <div key={index} className={styles.sidebarItem}>
-              <div className={styles.avatar}>
-                <Image src="/images/biden.jpg" alt="" width={48} height={48} />
-              </div>
-              <div className={styles.newsContent}>
-                <span className={styles.author}>
-                  {news.author.toUpperCase()}
-                </span>
-                <p className={styles.sidebarTitle}>{news.title}</p>
-              </div>
-            </div>
-          ))}
-
-          {categories.map((category, index) => (
-            <div key={index} className={styles.categoryItem}>
-              <span className={styles.category}>{category.name}</span>
-              <p className={styles.categoryTitle}>{category.title}</p>
-            </div>
-          ))}
-        </div>
+        <Sidebar/>
       </div>
       <PopularNews />
     </>

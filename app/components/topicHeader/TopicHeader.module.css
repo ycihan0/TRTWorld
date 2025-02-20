@@ -1,0 +1,40 @@
+.topicHeader {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #a0a5aa;
+  height: 80px;
+}
+.topicTitle {
+  color: #22262a;
+  font-weight: bold;
+  border-right: solid #e1e6eb 1px;
+  padding-right: 24px;
+}
+
+.topics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.topics a {
+  text-decoration: none;
+  color: #63676c;
+  padding: 0 24px;
+  border-right: solid #e1e6eb 1px;
+}
+
+.topics a:last-child {
+  border-right: none;
+}
+
+.topics a:hover {
+  color: #22262a;
+}
+
+@media (max-width: 700px) {
+  .topics a {
+    border-right: none;
+  }
+}
