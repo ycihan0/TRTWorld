@@ -1,17 +1,20 @@
-
 .advertisement {
     flex: 1;
-    background: white;
     padding-left: 24px;
-  }
-  
-  .advertisement img {
-    max-width: 500px;
+    height: auto;
+}
+
+.advertisement img {
+    width: 100%;
+    max-width: 382px;
     padding-top: 12px;
-  }
-  
-  .advertisement h3 {
+    height: auto;
+    max-height: 382px;
+    object-fit: cover;
+}
+
+.advertisement h3 {
     font-weight: bold;
     font-size: 16px;
-    color: 22262A;
-  }
+    color: #22262A;
+}

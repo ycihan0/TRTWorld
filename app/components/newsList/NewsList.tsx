@@ -31,15 +31,10 @@ const newsData = [
 
 const NewsList: React.FC = () => {
   return (
-    <div className={styles.newsSection}>
+    <div>
       {newsData.map((news, index) => (
         <div key={index} className={styles.newsCard}>
-          <Image
-            src="/images/biden.jpg"
-            alt={news.title}
-            width={406}
-            height={234}
-          />
+          <Image src="/images/biden.jpg" alt="" width={406} height={234} />
           <div className={styles.newsContent}>
             <span className={styles.category}>{news.category}</span>
             <span className={styles.time}>{news.time}</span>

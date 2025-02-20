@@ -8,9 +8,9 @@ const Advert: React.FC = () => {
       <Image
         src="/images/advert.jpg"
         alt="TRT World Forum"
-        width={500}
-        height={500}
-      />
+        width={382}
+        height={382}
+       />
     </div>
   );
 };
