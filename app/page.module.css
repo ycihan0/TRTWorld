@@ -5,6 +5,13 @@
     padding: 0 120px;
 }
 
+.newSectionContainer {
+  display: flex;
+  margin: 20px auto;
+  border-top: solid #e1e6eb 1px;
+  padding-top: 24px;
+}
+
 @media (max-width: 1200px) {
     .container {
         padding: 0 80px;
@@ -18,6 +25,10 @@
         padding: 0 50px;
      
     }
+
+    .newSectionContainer {
+      flex-direction: column-reverse;
+    }
     
   }  @media (max-width: 500px) {
     .container {
@@ -26,6 +37,5 @@
     }
     
   }
-
 
 

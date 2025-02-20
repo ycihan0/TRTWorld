@@ -1,0 +1,17 @@
+
+.advertisement {
+    flex: 1;
+    background: white;
+    padding-left: 24px;
+  }
+  
+  .advertisement img {
+    max-width: 500px;
+    padding-top: 12px;
+  }
+  
+  .advertisement h3 {
+    font-weight: bold;
+    font-size: 16px;
+    color: 22262A;
+  }

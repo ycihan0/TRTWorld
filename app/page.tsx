@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 import MainNewsFeed from "./components/mainNewsFeed/MainNewsFeed";
 import NewsCard from "./components/newsCard/NewsCard";
+import NewsList from "./components/newsList/NewsList";
+import Advert from "./components/advert/Advert";
 
 // type News = {
 //   id: string;
@@ -31,10 +33,14 @@ export default async function Home() {
     <>
       <div className={styles.container}>
         <MainNewsFeed />
-        
       </div>
       <NewsCard />
-     
+      <div className={styles.container}>
+        <div className={styles.newSectionContainer}>
+          <NewsList />
+          <Advert />
+        </div>
+      </div>
     </>
   );
 }
