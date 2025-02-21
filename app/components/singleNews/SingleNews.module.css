@@ -9,15 +9,15 @@
 
 .imageWrapper {
   width: 100%;
+  height: auto;
+  aspect-ratio: 920 / 400;
+  overflow: hidden;
 }
 
 .image {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-}
-
-.content {
 }
 
 .category {

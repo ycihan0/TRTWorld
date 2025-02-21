@@ -1,5 +1,3 @@
-
-
 .newsCard {
   display: flex;
   overflow: hidden;
@@ -10,21 +8,13 @@
 .newsCard:first-child {
   padding-top: 0;
 }
-.imageWrapper{
+.imageWrapper {
   max-width: 406px;
   width: 100%;
-  height: auto;
-}
-
-.imageWrapper img {
-  object-fit: cover;
-    width: 100%; 
-    height: 100%; 
 }
 
 .newsContent {
   padding: 24px;
-min-width: 300px;
 }
 
 .category {
@@ -54,11 +44,24 @@ min-width: 300px;
   padding-top: 12px;
 }
 
-
 @media (max-width: 768px) {
   .newsCard {
-    flex-direction: row;
+    flex-direction: column;
+  }
+  .newsContent {
+    padding-left: 0;
+  }
+  .imageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
   }
 
- 
+  .imageWrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 }

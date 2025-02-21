@@ -2,6 +2,7 @@
     flex: 1;
     padding-left: 24px;
     height: auto;
+
 }
 
 .advertisement img {
@@ -17,4 +18,15 @@
     font-weight: bold;
     font-size: 16px;
     color: #22262A;
+}
+@media (max-width: 980px) {
+    .advertisement {
+      padding-bottom: 24px;
+      border-bottom: solid #e1e6eb 1px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 }
