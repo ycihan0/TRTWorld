@@ -19,7 +19,17 @@ export default async function Home() {
   }
 
   const newsList: News[] = await res.json();
+  const topicTag: string = "US Elections 2020";
 
+  const topicNews = newsList
+    .filter((item) => item.tags?.includes(topicTag))
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
+    .slice(0, 4);
+
+console.log(newsList)
   const mainNews = {
     title: "Is Covid-19 ‘herd immunity’ really working in Pakistan?",
     description:
@@ -57,7 +67,7 @@ export default async function Home() {
       <div className={styles.container}>
         <MainNewsFeed newsList={newsList} />
       </div>
-      <NewsCard />
+      <NewsCard topicNews={topicNews} topicTag={topicTag} />
       <div className={styles.container}>
         <div className={styles.newSectionContainer}>
           <div className={styles.newsSection}>

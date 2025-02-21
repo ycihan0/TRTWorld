@@ -10,14 +10,14 @@ interface MainNewsFeedProps {
 }
 const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
   const news = newsList
-    .filter((news) => news.author.name === null)
+    .filter((news) => news.author?.name === null)
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     );
 
   const columnists = newsList
-    .filter((news) => news.author.name !== null)
+    .filter((news) => news.author?.name !== null)
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
@@ -94,7 +94,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
         </div>
         <Sidebar columnists={columnists} news={news}/>
       </div>
-      <PopularNews news={news} />
+      <PopularNews newsList={newsList} />
     </>
   );
 };

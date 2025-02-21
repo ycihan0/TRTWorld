@@ -1,59 +1,52 @@
 import Image from "next/image";
 import styles from "./NewsCard.module.css";
+import { News } from "@/types/news";
+import { formatDistanceToNow } from "date-fns";
 
-const newsData = [
-  {
-    id: 1,
-    image: "/biden-trump-debate.jpg", // Örnek resim yolu
-    time: "1 HOUR AGO",
-    duration: "3:59",
-    title: "Biden, Trump in fiery first US presidential debate",
-    isVideo: true,
-  },
-  {
-    id: 2,
-    image: "/trump-tax.jpg",
-    time: "10 HOURS AGO",
-    title:
-      "Trump’s tax returns reveal a system that rewards all of America’s elite",
-  },
-  {
-    id: 3,
-    image: "/bloomberg.jpg",
-    time: "13 SEP 2020",
-    title: "Bloomberg to spend $100M in Florida to help Biden",
-  },
-  {
-    id: 4,
-    image: "/biden-trump.jpg",
-    time: "22 AUG 2020",
-    title: "Trump election victory in peril as he struggles to oppose Biden",
-  },
-];
 
-const NewsCard: React.FC = () => {
+interface TopicFilteredNewsProps {
+  topicNews: News[];
+  topicTag: string;
+}
+
+const NewsCard: React.FC<TopicFilteredNewsProps> = ({
+  topicNews,
+  topicTag,
+}) => {
+  function getTimeAgo(dateString: string): string {
+    return formatDistanceToNow(new Date(dateString), { addSuffix: true });
+  }
+
   return (
     <div className={styles.background}>
       <div className={styles.container}>
-        <h2 className={styles.heading}>US ELECTIONS 2020</h2>
+        <h2 className={styles.heading}>{topicTag}</h2>
         <div className={styles.grid}>
-          {newsData.map((news) => (
+          {topicNews.map((news) => (
             <div key={news.id} className={styles.card}>
               <div className={styles.imageWrapper}>
                 <Image
-                  src="/images/biden.jpg"
+                  src={news.image}
                   alt={news.title}
                   width={302}
                   height={240}
                   className={styles.image}
                 />
-                {news.isVideo && <div className={styles.playButton}>▶</div>}
+                {news.video && <div className={styles.playButton}>▶</div>}
               </div>
               <div className={styles.content}>
-                <span className={styles.time}>{news.time}{news.duration && (
-                  <span className={styles.duration}> &nbsp; ▶ &nbsp;{news.duration}</span>
-                )}</span>
-                
+                <span className={styles.time}>
+                {getTimeAgo(news.publishedAt).charAt(0).toUpperCase() +
+                  getTimeAgo(news.publishedAt).slice(1)}
+                 
+                  {news.video && (
+                    <span className={styles.duration}>
+                  
+                      {/* &nbsp; ▶ &nbsp;{news.video} */}
+                    </span>
+                  )}
+                </span>
+
                 <p className={styles.title}>{news.title}</p>
               </div>
             </div>

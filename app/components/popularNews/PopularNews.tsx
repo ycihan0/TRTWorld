@@ -1,38 +1,22 @@
 import { News } from "@/types/news";
 import styles from "./PopularNews.module.css";
-const newsItems = [
-  {
-    id: 1,
-    category: "OPINION",
-    title:
-      "Nepal should stop selling its youth to the Indian and British armies",
-  },
-  {
-    id: 2,
-    category: "MAGAZINE",
-    title: "Big banks moved trillions despite knowing money was illegal",
-  },
-  {
-    id: 3,
-    category: "LIFE",
-    title: "Footballer Mesut Ozil requests help for infant with rare disease",
-  },
-  {
-    id: 4,
-    category: "MAGAZINE",
-    title: "Why are anti-Sisi protests growing in Egypt?",
-  },
-];
 
 interface shortedNewsProps {
-  news: News[];
+  newsList: News[];
 }
-const PopularNews: React.FC<shortedNewsProps> = ({news}) => {
+const PopularNews: React.FC<shortedNewsProps> = ({newsList}) => {
+  //  const today = new Date().toISOString().split("T")[0];
+  const today = "2025-02-21";
+  const filteredNews = newsList
+  .filter((item) => item.publishedAt?.split("T")[0]==today)
+  .sort((a, b) => b.viewCount - a.viewCount)
+  .slice(0, 4); 
+
   return (
     <div className={styles.container}>
       <h3 className={styles.heading}>POPULAR TODAY</h3>
       <div className={styles.newsList}>
-        {news.slice(0,4).map((item, index) => (
+        {filteredNews.slice(0,4).map((item, index) => (
           <div key={item.id} className={styles.newsItem}>
             <span className={styles.number}>{index + 1}</span>
             <div className={styles.content}>
