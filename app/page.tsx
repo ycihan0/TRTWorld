@@ -5,6 +5,7 @@ import NewsCard from "./components/newsCard/NewsCard";
 import NewsList from "./components/newsList/NewsList";
 import Advert from "./components/advert/Advert";
 import TopStory from "./components/topStory/TopStory";
+import SingleNews from "./components/singleNews/SingleNews";
 
 // type News = {
 //   id: string;
@@ -52,6 +53,15 @@ export default async function Home() {
     },
   ];
 
+  const newsItem = {
+    category: "MAGAZINE",
+    date: "5 DAYS AGO",
+    title: "Centuries of tradition: Why Indonesian fishermen rescue Rohingya",
+    description: "How local fishermen obeyed an ancient custom, defying government orders by doing so.",
+    authors: ["Johanes Hutabarat", "Jennar Kiansantang"],
+    image: "/images/news.jpg",
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -63,6 +73,7 @@ export default async function Home() {
           <div className={styles.newsSection}>
             <NewsList />
             <TopStory mainNews={mainNews} sideNews={sideNews} />
+            <SingleNews news={newsItem}/>
           </div>
           <Advert />
         </div>

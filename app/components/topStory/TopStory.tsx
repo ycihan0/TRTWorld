@@ -19,13 +19,9 @@ const TopStory: React.FC<FeatureNewsProps> = ({ mainNews }) => {
       <div className={styles.featureContainer}>
         <div className={styles.mainNews}>
           {mainNews.image && (
-            <Image
-              src="/images/biden.jpg"
-              alt=""
-              width={468}
-              height={201}
-              className={styles.mainImage}
-            />
+            <div className={styles.mainImage}>
+              <Image src="/images/biden.jpg" alt="" width={468} height={201} />
+            </div>
           )}
           <div className={styles.mainContent}>
             <h2 className={styles.title}>{mainNews.title}</h2>
@@ -57,7 +53,7 @@ const TopStory: React.FC<FeatureNewsProps> = ({ mainNews }) => {
             />
             <div className={styles.playButton}>▶</div>
             <div className={styles.sideContent}>
-            <span className={styles.duration}> ▶ &nbsp; 3:59</span>
+              <span className={styles.duration}> ▶ &nbsp; 3:59</span>
               <h3 className={styles.sideTitle}>
                 Valentino Chooses Milan For Unusual Live Show, Not Paris
               </h3>
@@ -69,10 +65,10 @@ const TopStory: React.FC<FeatureNewsProps> = ({ mainNews }) => {
                 <Image src="/images/biden.jpg" alt="" width={48} height={48} />
               </div>
               <div className={styles.newsContent}>
-                <span className={styles.author}>
-                  Valentino Chooses 
-                </span>
-                <p className={styles.sidebarTitle}>    Valentino Chooses Milan For Unusual Live Show, Not Paris</p>
+                <span className={styles.author}>Valentino Chooses</span>
+                <p className={styles.sidebarTitle}>
+                  Valentino Chooses Milan For Unusual Live Show, Not Paris
+                </p>
               </div>
             </div>
           </div>
