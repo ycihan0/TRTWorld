@@ -3,26 +3,8 @@ import styles from "./MainNewsFeed.module.css";
 import PopularNews from "../popularNews/PopularNews";
 import TopicHeader from "../topicHeader/TopicHeader";
 import Sidebar from "../sidebar/Sidebar";
+import { News } from "@/types/news";
 
-type News = {
-  id: string;
-  title: string;
-  slug: string;
-  subtitle: string;
-  publishedAt: string;
-  newsDate: string;
-  author: {
-    name: string | null;
-    image: string | null;
-  };
-  description: string;
-  source: string;
-  tags: string[];
-  image: string;
-  category: string;
-  content: string;
-  viewCount: number;
-};
 interface MainNewsFeedProps {
   newsList: News[];
 }
@@ -47,7 +29,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
 
     const mainTags = new Set(mainNews.tags);
 
-    return allNews
+    return allNews.slice(7)
       .filter((item) => item.id !== mainNews.id) // Exclude the same news
       .map((item) => {
         const commonTags = item.tags.filter((tag) => mainTags.has(tag)).length;
@@ -57,7 +39,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
   };
 
   
-  const relatedNews = news.length > 0 ? getRelatedNews(news[0], newsList) : [];
+  const relatedNews = news.length > 0 ? getRelatedNews(news[0], news) : [];
 
 
 
@@ -110,7 +92,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
             <p>{news[2]?.subtitle}</p>
           </div>
         </div>
-        <Sidebar columnists={columnists} />
+        <Sidebar columnists={columnists} news={news}/>
       </div>
       <PopularNews />
     </>

@@ -6,26 +6,7 @@ import NewsList from "./components/newsList/NewsList";
 import Advert from "./components/advert/Advert";
 import TopStory from "./components/topStory/TopStory";
 import SingleNews from "./components/singleNews/SingleNews";
-
-type News = {
-  id: string;
-  title: string;
-  slug: string;
-  subtitle: string;
-  publishedAt: string;
-  newsDate: string;
-  author: {
-    name: string | null;
-    image: string | null;
-  };
-  description: string;
-  source: string;
-  tags: string[];
-  image: string;
-  category: string;
-  content: string;
-  viewCount: number;
-};
+import { News } from "@/types/news";
 
 export default async function Home() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
