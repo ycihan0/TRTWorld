@@ -42,24 +42,24 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
     )
     .slice(0, 2);
 
-  // const getRelatedNews = (mainNews: News, allNews: News[]) => {
-  //   if (!mainNews) return [];
+  const getRelatedNews = (mainNews: News, allNews: News[]) => {
+    if (!mainNews) return [];
 
-  //   const mainTags = new Set(mainNews.tags);
+    const mainTags = new Set(mainNews.tags);
 
-  //   return allNews
-  //     .filter((item) => item.id !== mainNews.id) // Aynı haberi hariç tut
-  //     .map((item) => {
-  //       const commonTags = item.tags.filter((tag) => mainTags.has(tag)).length;
-  //       return { ...item, relevanceScore: commonTags };
-  //     })
-  //     .sort((a, b) => b.relevanceScore - a.relevanceScore); // En alakalı olanı en üste koy
-  // };
+    return allNews
+      .filter((item) => item.id !== mainNews.id) // Exclude the same news
+      .map((item) => {
+        const commonTags = item.tags.filter((tag) => mainTags.has(tag)).length;
+        return { ...item, relevanceScore: commonTags };
+      })
+      .sort((a, b) => b.relevanceScore - a.relevanceScore); 
+  };
 
-  // // En güncel haberin ilgili haberlerini al
-  // const relatedNews = news.length > 0 ? getRelatedNews(news[0], newsList) : [];
+  
+  const relatedNews = news.length > 0 ? getRelatedNews(news[0], newsList) : [];
 
-  // console.log("En alakalı haberler:", relatedNews);
+
 
   return (
     <>
@@ -67,43 +67,47 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
       <div className={styles.container}>
         <div className={styles.mainNews}>
           <div className={styles.mainImage}>
-            <Image src={news[0]?.image} alt="" width={664} height={373} />
+            <Image
+              src={news[0].image || "/images/TrtWorld.jpg"}
+              alt={news[0].title || "main news image"}
+              width={664}
+              height={373}
+            />
           </div>
-          <span className={styles.tag}>lala</span>
-          <h1 className={styles.mainTitle}>lala</h1>
+          <span className={styles.tag}>{news[0]?.category}</span>
+          <h1 className={styles.mainTitle}>{news[0]?.title}</h1>
           <div className={styles.relatedStories}>
             <span>RELATED STORIES</span>
             <div className={styles.relatedStoriesTitles}>
-              <a href="#">Calls grow for Azerbaijan, Armenia to end fighting</a>
-              <a href="#">Turkish lawmakers condemn Armenian attacks</a>
-              <a href="#">Azerbaijan downs Armenian drone</a>
+              {relatedNews.slice(0,3).map((item)=><a href="#" key={item.id}>{item.title}</a>)}
+             
             </div>
           </div>
         </div>
 
         <div className={styles.sideNews}>
           <div className={styles.newsItem}>
-            <Image src="/images/biden.jpg" alt="" width={296} height={166} />
-            <h3>The importance of Russia’s growing footprint in Iraq</h3>
-            <p>
-              The Kremlin has been building influence in the Iraqi energy
-              sector...Why is Kosovo becoming a museum in honour of US
-              politicians?Why is Kosovo becoming a museum in honour of US
-              politicians?
-            </p>
+            <Image
+              src={news[1].image || "/images/TrtWorld.jpg"}
+              alt={news[1].title || ""}
+              width={296}
+              height={166}
+            />
+            <h3>{news[1]?.title}</h3>
+            <p>{news[1]?.subtitle}</p>
           </div>
           <div
             className={styles.newsItem}
             style={{ marginTop: "12px", border: "none" }}
           >
-            <Image src="/images/biden.jpg" alt="" width={296} height={166} />
-            <h3>The importance of Russia’s growing footprint in Iraq</h3>
-            <p>
-              The Kremlin has been building influence in the Iraqi energy
-              sector...Why is Kosovo becoming a museum in honour of US
-              politicians?Why is Kosovo becoming a museum in honour of US
-              politicians?
-            </p>
+            <Image
+              src={news[2].image || "/images/TrtWorld.jpg"}
+              alt={news[2].title || ""}
+              width={296}
+              height={166}
+            />
+            <h3>{news[2]?.title}</h3>
+            <p>{news[2]?.subtitle}</p>
           </div>
         </div>
         <Sidebar columnists={columnists} />
