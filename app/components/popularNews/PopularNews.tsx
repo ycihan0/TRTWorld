@@ -1,3 +1,4 @@
+import { News } from "@/types/news";
 import styles from "./PopularNews.module.css";
 const newsItems = [
   {
@@ -22,14 +23,18 @@ const newsItems = [
     title: "Why are anti-Sisi protests growing in Egypt?",
   },
 ];
-const PopularNews: React.FC = () => {
+
+interface shortedNewsProps {
+  news: News[];
+}
+const PopularNews: React.FC<shortedNewsProps> = ({news}) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.heading}>POPULAR TODAY</h3>
       <div className={styles.newsList}>
-        {newsItems.map((item) => (
+        {news.slice(0,4).map((item, index) => (
           <div key={item.id} className={styles.newsItem}>
-            <span className={styles.number}>{item.id}</span>
+            <span className={styles.number}>{index + 1}</span>
             <div className={styles.content}>
               <span className={styles.category}>{item.category}</span>
               <p className={styles.title}>{item.title}</p>

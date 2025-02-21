@@ -94,7 +94,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
         </div>
         <Sidebar columnists={columnists} news={news}/>
       </div>
-      <PopularNews />
+      <PopularNews news={news} />
     </>
   );
 };
