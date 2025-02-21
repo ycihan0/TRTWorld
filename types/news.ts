@@ -16,6 +16,9 @@ export type News = {
     category: string;
     content: string;
     viewCount: number;
-    video:string | null;
+    video:{
+      "link": string | null;
+      "time": string | null;
+    };
   };
   

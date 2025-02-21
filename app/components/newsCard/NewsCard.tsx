@@ -39,10 +39,10 @@ const NewsCard: React.FC<TopicFilteredNewsProps> = ({
                 {getTimeAgo(news.publishedAt).charAt(0).toUpperCase() +
                   getTimeAgo(news.publishedAt).slice(1)}
                  
-                  {news.video && (
+                  {news.video.link && (
                     <span className={styles.duration}>
                   
-                      {/* &nbsp; ▶ &nbsp;{news.video} */}
+                      &nbsp; ▶ &nbsp;{news.video.time}
                     </span>
                   )}
                 </span>
