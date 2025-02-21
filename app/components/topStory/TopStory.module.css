@@ -25,9 +25,10 @@
 }
 
 .mainImage {
-  max-width: 468px;
+  max-width: 600px;
   width: 100%;
-  height: auto;
+  height: 201;
+
   
 }
 
@@ -86,7 +87,7 @@
   background-color: #00baff;
   color: #f7fcff;
   font-size: 16px;
-  padding: 5px 14px;
+  padding: 4px 10px;
   cursor: pointer;
 }
 

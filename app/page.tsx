@@ -7,17 +7,25 @@ import Advert from "./components/advert/Advert";
 import TopStory from "./components/topStory/TopStory";
 import SingleNews from "./components/singleNews/SingleNews";
 
-// type News = {
-//   id: string;
-//   title: string;
-//   description: string;
-//   date: string;
-//   images: string[];
-//   category: string;
-//   headline: boolean;
-//   article: string;
-//   chosen: boolean;
-// };
+type News = {
+  id: string;
+  title: string;
+  slug: string;
+  subtitle: string;
+  publishedAt: string;
+  newsDate: string;
+  author: {
+    name: string | null;
+    image: string | null;
+  };
+  description: string;
+  source: string;
+  tags: string[];
+  image: string;
+  category: string;
+  content: string;
+  viewCount: number;
+};
 
 export default async function Home() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
@@ -29,7 +37,7 @@ export default async function Home() {
     notFound();
   }
 
-  // const newsList: News[] = await res.json();
+  const newsList: News[] = await res.json();
 
   const mainNews = {
     title: "Is Covid-19 ‘herd immunity’ really working in Pakistan?",
@@ -57,7 +65,8 @@ export default async function Home() {
     category: "MAGAZINE",
     date: "5 DAYS AGO",
     title: "Centuries of tradition: Why Indonesian fishermen rescue Rohingya",
-    description: "How local fishermen obeyed an ancient custom, defying government orders by doing so.",
+    description:
+      "How local fishermen obeyed an ancient custom, defying government orders by doing so.",
     authors: ["Johanes Hutabarat", "Jennar Kiansantang"],
     image: "/images/news.jpg",
   };
@@ -65,7 +74,7 @@ export default async function Home() {
   return (
     <>
       <div className={styles.container}>
-        <MainNewsFeed />
+        <MainNewsFeed newsList={newsList} />
       </div>
       <NewsCard />
       <div className={styles.container}>
@@ -73,7 +82,7 @@ export default async function Home() {
           <div className={styles.newsSection}>
             <NewsList />
             <TopStory mainNews={mainNews} sideNews={sideNews} />
-            <SingleNews news={newsItem}/>
+            <SingleNews news={newsItem} />
           </div>
           <Advert />
         </div>

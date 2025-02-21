@@ -1,19 +1,28 @@
 import Image from "next/image";
 import styles from "./Sidebar.module.css";
 
-const newsData = [
-  {
-    author: "Carel Du Marchie Sarvaas",
-    title: "Why an effective vaccine is just the start of disease control",
-    image: "/profile1.jpg",
-  },
-  {
-    author: "Giorgio Cafiero",
-    title:
-      "This African nation could be the next to normalise ties with Israel",
-    image: "/profile2.jpg",
-  },
-];
+type News = {
+  id: string;
+  title: string;
+  slug: string;
+  subtitle: string;
+  publishedAt: string;
+  newsDate: string;
+  author: {
+    name: string|null;
+    image: string|null;
+  };
+  description: string;
+  source: string;
+  tags: string[];
+  image: string;
+  category: string;
+  content: string;
+  viewCount: number;
+};
+interface ColumnistsProps {
+  columnists: News[];
+}
 
 const categories = [
   { name: "AFRICA", title: "Hundreds Of Prisoners Escape Uganda Prison" },
@@ -31,16 +40,16 @@ const categories = [
   },
 ];
 
-const Sidebar: React.FC = () => {
+const Sidebar: React.FC<ColumnistsProps> = ({columnists}) => {
   return (
     <div className={styles.sidebar}>
-      {newsData.map((news, index) => (
-        <div key={index} className={styles.sidebarItem}>
+      {columnists.map((news) => (
+        <div key={news.id} className={styles.sidebarItem}>
           <div className={styles.avatar}>
-            <Image src="/images/biden.jpg" alt="" width={48} height={48} />
+            <Image src={news.author.image||"/images/avatar.jpg"} alt={news.author.name||"avatar"} width={48} height={48} />
           </div>
           <div className={styles.newsContent}>
-            <span className={styles.author}>{news.author.toUpperCase()}</span>
+            <span className={styles.author}>{news.author.name?.toUpperCase()}</span>
             <p className={styles.sidebarTitle}>{news.title}</p>
           </div>
         </div>
