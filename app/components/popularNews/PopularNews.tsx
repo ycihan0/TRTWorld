@@ -19,7 +19,7 @@ const PopularNews: React.FC<shortedNewsProps> = ({ newsList }) => {
       <div className={styles.newsList}>
         {filteredNews.slice(0, 4).map((item, index) => (
           <Link
-            href={`/${item.category}/${item.slug}-${item.id.substring(0, 8)}`}
+            href={`/${item.category}/${item.slug}/${item.id}`}
             key={item.id}
             className={styles.newsItem}
           >

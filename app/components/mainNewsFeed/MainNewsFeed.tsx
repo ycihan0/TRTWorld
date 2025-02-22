@@ -43,7 +43,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
           <Link
             href={`/${firstSevenNews[0].category}/${
               firstSevenNews[0].slug
-            }-${firstSevenNews[0].id.substring(0, 8)}`}
+            }/${firstSevenNews[0].id}`}
             className={styles.mainImage}
           >
             <Image
@@ -57,7 +57,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
           <Link
             href={`/${firstSevenNews[0].category}/${
               firstSevenNews[0].slug
-            }-${firstSevenNews[0].id.substring(0, 8)}`}
+            }/${firstSevenNews[0].id}`}
           >
             <h1 className={styles.mainTitle}>{firstSevenNews[0]?.title}</h1>
           </Link>
@@ -67,10 +67,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
             <div className={styles.relatedStoriesTitles}>
               {relatedNews.slice(0, 3).map((item) => (
                 <Link
-                  href={`/${item.category}/${item.slug}-${item.id.substring(
-                    0,
-                    8
-                  )}`}
+                  href={`/${item.category}/${item.slug}/${item.id}`}
                   key={item.id}
                 >
                   {item.title}
@@ -84,7 +81,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
           <Link
             href={`/${firstSevenNews[1].category}/${
               firstSevenNews[1].slug
-            }-${firstSevenNews[1].id.substring(0, 8)}`}
+            }/${firstSevenNews[1].id}`}
             className={styles.newsItem}
           >
             <Image
@@ -99,7 +96,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
           <Link
             href={`/${firstSevenNews[2].category}/${
               firstSevenNews[2].slug
-            }-${firstSevenNews[2].id.substring(0, 8)}`}
+            }/${firstSevenNews[2].id}`}
             className={styles.newsItem}
             style={{ marginTop: "12px", border: "none" }}
           >

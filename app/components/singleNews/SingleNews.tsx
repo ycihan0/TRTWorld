@@ -21,10 +21,7 @@ const SingleNews: React.FC<LastestMagazineNewsProps> = ({ categoryNews }) => {
   return (
     <div className={styles.newsCard}>
       <Link
-        href={`/${news[0].category}/${news[0].slug}-${news[0].id.substring(
-          0,
-          8
-        )}`}
+        href={`/${news[0].category}/${news[0].slug}/${news[0].id}`}
         className={styles.imageWrapper}
       >
         <Image
@@ -44,17 +41,14 @@ const SingleNews: React.FC<LastestMagazineNewsProps> = ({ categoryNews }) => {
         </span>
       </span>
       <Link
-        href={`/${news[0].category}/${news[0].slug}-${news[0].id.substring(
-          0,
-          8
-        )}`}
+        href={`/${news[0].category}/${news[0].slug}/${news[0].id}`}
       >
         <h2 className={styles.title}>{news[0].title}</h2>
         <p className={styles.description}>{news[0].subtitle}</p>
       </Link>
 
       {newsWithAuthor.map((news) => (
-        <Link  href={`/${news.category}/${news.slug}-${news.id.substring(0, 8)}`} key={news.id} className={styles.sidebarItem}>
+        <Link  href={`/${news.category}/${news.slug}/${news.id}`} key={news.id} className={styles.sidebarItem}>
           <div className={styles.avatar}>
             <Image
               src={news.author.image || "/images/default-avatar.jpg"}

@@ -19,7 +19,7 @@ const NewsList: React.FC<LastestNewsProps> = ({ lastestNews }) => {
     <>
       {lastestNews?.map((news) => (
         <Link
-          href={`/${news.category}/${news.slug}-${news.id.substring(0, 8)}`}
+          href={`/${news.category}/${news.slug}/${news.id}`}
           key={news.id}
           className={styles.newsCard}
         >

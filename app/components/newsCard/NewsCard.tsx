@@ -26,7 +26,7 @@ const NewsCard: React.FC<TopicFilteredNewsProps> = ({
         <div className={styles.grid}>
           {topicNews.map((news) => (
             <Link
-              href={`/${news.category}/${news.slug}-${news.id.substring(0, 8)}`}
+              href={`/${news.category}/${news.slug}/${news.id}`}
               key={news.id}
               className={styles.card}
             >

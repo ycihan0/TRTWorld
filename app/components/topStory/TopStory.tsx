@@ -51,7 +51,7 @@ export default async function TopStory() {
           <Link
             href={`/${mainNews[0].category}/${
               mainNews[0].slug
-            }-${mainNews[0].id.substring(0, 8)}`}
+            }/${mainNews[0].id}`}
             className={styles.mainNews}
           >
             {mainNews.length > 0 && (
@@ -76,7 +76,7 @@ export default async function TopStory() {
                 <Link
                   href={`/${mainNews[0].category}/${
                     mainNews[0].slug
-                  }-${mainNews[0].id.substring(0, 8)}`}
+                  }/${mainNews[0].id}`}
                   key={news.id}
                   className={styles.sideNewsItem}
                 >
@@ -108,7 +108,7 @@ export default async function TopStory() {
             <Link
               href={`/${author[0].category}/${
                 author[0].slug
-              }-${author[0].id.substring(0, 8)}`}
+              }/${author[0].id}`}
               className={styles.sideNewsItem}
             >
               <div className={styles.sidebarItem}>

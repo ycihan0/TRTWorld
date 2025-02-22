@@ -14,7 +14,7 @@ const Sidebar: React.FC<ColumnistsProps> = ({ columnists, firstSevenNews }) => {
     <div className={styles.sidebar}>
       {columnists.map((news) => (
         <Link
-          href={`/${news.category}/${news.slug}-${news.id.substring(0, 8)}`}
+          href={`/${news.category}/${news.slug}/${news.id}`}
           key={news.id}
           className={styles.sidebarItem}
         >
@@ -37,7 +37,7 @@ const Sidebar: React.FC<ColumnistsProps> = ({ columnists, firstSevenNews }) => {
 
       {extractNews.map((item) => (
         <Link
-          href={`/${item.category}/${item.slug}-${item.id.substring(0, 8)}`}
+          href={`/${item.category}/${item.slug}/${item.id}`}
           key={item.id}
         >
           <div className={styles.categoryItem}>
