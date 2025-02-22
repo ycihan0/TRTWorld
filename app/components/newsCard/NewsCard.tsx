@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./NewsCard.module.css";
 import { News } from "@/types/news";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 
 interface TopicFilteredNewsProps {
   topicNews: News[];
@@ -12,17 +13,23 @@ const NewsCard: React.FC<TopicFilteredNewsProps> = ({
   topicNews,
   topicTag,
 }) => {
+  const getTimeAgo = (dateString: string): string =>
+    formatDistanceToNow(new Date(dateString), { addSuffix: true }).replace(
+      "about",
+      ""
+    );
 
-  const getTimeAgo = (dateString: string): string => 
-    formatDistanceToNow(new Date(dateString), { addSuffix: true }).replace("about", '');
-  
   return (
     <div className={styles.background}>
       <div className={styles.container}>
         <h2 className={styles.heading}>{topicTag}</h2>
         <div className={styles.grid}>
           {topicNews.map((news) => (
-            <div key={news.id} className={styles.card}>
+            <Link
+              href={`/${news.category}/${news.slug}-${news.id.substring(0, 8)}`}
+              key={news.id}
+              className={styles.card}
+            >
               <div className={styles.imageWrapper}>
                 <Image
                   src={news.image}
@@ -48,7 +55,7 @@ const NewsCard: React.FC<TopicFilteredNewsProps> = ({
 
                 <p className={styles.title}>{news.title}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

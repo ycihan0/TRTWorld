@@ -13,18 +13,15 @@
   cursor: pointer;
 }
 
-
 .mainImage img {
   width: 100%;
   height: auto;
   max-width: 664px;
- 
 }
 
 .mainImage img:hover {
   opacity: 0.6;
 }
-
 
 .tag {
   position: absolute;
@@ -117,7 +114,6 @@
   font-family: "Noto Serif", serif;
 }
 
-
 @media (max-width: 980px) {
   .mainImage img {
     max-width: 900px;
@@ -147,8 +143,6 @@
     padding-top: 24px;
     padding-left: 0;
   }
-
-
 
   .container {
     display: grid;
@@ -188,7 +182,6 @@
   .mainTitle {
     font-size: 25px;
   }
-
 
   .relatedStories a {
     font-size: 12px;

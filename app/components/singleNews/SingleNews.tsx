@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./SingleNews.module.css";
 import { News } from "@/types/news";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 
 interface LastestMagazineNewsProps {
   categoryNews: News[];
@@ -19,7 +20,13 @@ const SingleNews: React.FC<LastestMagazineNewsProps> = ({ categoryNews }) => {
 
   return (
     <div className={styles.newsCard}>
-      <div className={styles.imageWrapper}>
+      <Link
+        href={`/${news[0].category}/${news[0].slug}-${news[0].id.substring(
+          0,
+          8
+        )}`}
+        className={styles.imageWrapper}
+      >
         <Image
           src={news[0].image}
           alt={news[0].title}
@@ -27,7 +34,7 @@ const SingleNews: React.FC<LastestMagazineNewsProps> = ({ categoryNews }) => {
           height={400}
           className={styles.image}
         />
-      </div>
+      </Link>
 
       <span className={styles.category}>
         {news[0].category}
@@ -36,10 +43,18 @@ const SingleNews: React.FC<LastestMagazineNewsProps> = ({ categoryNews }) => {
             getTimeAgo(news[0].publishedAt).slice(1)}
         </span>
       </span>
-      <h2 className={styles.title}>{news[0].title}</h2>
-      <p className={styles.description}>{news[0].subtitle}</p>
+      <Link
+        href={`/${news[0].category}/${news[0].slug}-${news[0].id.substring(
+          0,
+          8
+        )}`}
+      >
+        <h2 className={styles.title}>{news[0].title}</h2>
+        <p className={styles.description}>{news[0].subtitle}</p>
+      </Link>
+
       {newsWithAuthor.map((news) => (
-        <div key={news.id} className={styles.sidebarItem}>
+        <Link  href={`/${news.category}/${news.slug}-${news.id.substring(0, 8)}`} key={news.id} className={styles.sidebarItem}>
           <div className={styles.avatar}>
             <Image
               src={news.author.image || "/images/default-avatar.jpg"}
@@ -53,7 +68,7 @@ const SingleNews: React.FC<LastestMagazineNewsProps> = ({ categoryNews }) => {
               {news.author.name || "Unknown Author"}
             </span>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

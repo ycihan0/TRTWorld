@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./Sidebar.module.css";
 import { News } from "@/types/news";
-
+import Link from "next/link";
 
 interface ColumnistsProps {
   columnists: News[];
@@ -13,7 +13,11 @@ const Sidebar: React.FC<ColumnistsProps> = ({ columnists, firstSevenNews }) => {
   return (
     <div className={styles.sidebar}>
       {columnists.map((news) => (
-        <div key={news.id} className={styles.sidebarItem}>
+        <Link
+          href={`/${news.category}/${news.slug}-${news.id.substring(0, 8)}`}
+          key={news.id}
+          className={styles.sidebarItem}
+        >
           <div className={styles.avatar}>
             <Image
               src={news.author.image || "/images/avatar.jpg"}
@@ -28,14 +32,19 @@ const Sidebar: React.FC<ColumnistsProps> = ({ columnists, firstSevenNews }) => {
             </span>
             <p className={styles.sidebarTitle}>{news.title}</p>
           </div>
-        </div>
+        </Link>
       ))}
 
       {extractNews.map((item) => (
-        <div key={item.id} className={styles.categoryItem}>
-          <span className={styles.category}>{item.category}</span>
-          <p className={styles.categoryTitle}>{item.title}</p>
-        </div>
+        <Link
+          href={`/${item.category}/${item.slug}-${item.id.substring(0, 8)}`}
+          key={item.id}
+        >
+          <div className={styles.categoryItem}>
+            <span className={styles.category}>{item.category}</span>
+            <p className={styles.categoryTitle}>{item.title}</p>
+          </div>
+        </Link>
       ))}
     </div>
   );
