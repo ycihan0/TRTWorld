@@ -30,6 +30,10 @@
   max-width: 302px;
   width: 100%;
   margin-bottom: 48px;
+  cursor: pointer;
+}
+.card:hover {
+  opacity: 0.6;
 }
 
 .imageWrapper {

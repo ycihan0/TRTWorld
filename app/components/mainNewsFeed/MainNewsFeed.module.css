@@ -10,13 +10,21 @@
   position: relative;
   padding-right: 24px;
   border-right: solid #e1e6eb 1px;
+  cursor: pointer;
 }
+
 
 .mainImage img {
   width: 100%;
   height: auto;
   max-width: 664px;
+ 
 }
+
+.mainImage img:hover {
+  opacity: 0.6;
+}
+
 
 .tag {
   position: absolute;
@@ -83,6 +91,11 @@
 .newsItem {
   padding-bottom: 12px;
   border-bottom: solid #e1e6eb 1px;
+  cursor: pointer;
+}
+
+.newsItem:hover {
+  opacity: 0.6;
 }
 
 .newsItem img {

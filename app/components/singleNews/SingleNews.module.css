@@ -13,6 +13,7 @@
   height: auto;
   aspect-ratio: 920 / 400;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .image {
@@ -34,14 +35,22 @@
   font-size: 36px;
   font-family: "Noto Serif", serif;
   color: #000000;
+  cursor: pointer;
 }
+.title:hover {
+  opacity: 0.6;
+}
+
 
 .description {
   font-size: 16px;
   color: #000000;
   font-family: "Noto Serif", serif;
   padding: 16px 0;
+  cursor: pointer;
 }
+
+
 
 .sidebarItem {
   display: flex;

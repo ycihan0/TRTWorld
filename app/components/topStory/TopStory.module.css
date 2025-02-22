@@ -26,6 +26,7 @@
   flex: 1;
   padding-right: 24px;
   border-right: solid #e1e6eb 1px;
+  cursor: pointer;
 }
 
 .mainImage {
@@ -37,6 +38,10 @@
 .mainImage img {
   object-fit: cover;
   max-width: 100%;
+}
+
+.mainImage img:hover {
+  opacity: 0.6;
 }
 
 .mainContent {
@@ -71,7 +76,13 @@
   border-bottom: solid #e1e6eb 1px;
   gap: 12px;
   position: relative;
+  cursor: pointer;
 }
+
+.sideNewsItem:hover {
+  opacity: 0.6;
+}
+
 .sideNewsItem:last-child {
   border-bottom: none;
 }
