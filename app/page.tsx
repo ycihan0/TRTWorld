@@ -29,7 +29,21 @@ export default async function Home() {
     )
     .slice(0, 4);
 
-console.log(newsList)
+  const news = newsList
+    .filter((news) => news.author?.name === null)
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
+
+  const columnists = newsList
+    .filter((news) => news.author?.name !== null)
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
+    .slice(0, 2);
+
   const mainNews = {
     title: "Is Covid-19 ‘herd immunity’ really working in Pakistan?",
     description:
@@ -65,7 +79,7 @@ console.log(newsList)
   return (
     <>
       <div className={styles.container}>
-        <MainNewsFeed newsList={newsList} />
+        <MainNewsFeed news={news} columnists={columnists} newsList={newsList} />
       </div>
       <NewsCard topicNews={topicNews} topicTag={topicTag} />
       <div className={styles.container}>

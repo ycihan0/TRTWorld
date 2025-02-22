@@ -20,7 +20,7 @@ const TopStory: React.FC<FeatureNewsProps> = ({ mainNews }) => {
         <div className={styles.mainNews}>
           {mainNews.image && (
             <div className={styles.mainImage}>
-              <Image src="/images/biden.jpg" alt="" width={468} height={201} />
+              <Image src="/images/biden.jpg" alt="" width={468} priority height={201}   />
             </div>
           )}
           <div className={styles.mainContent}>

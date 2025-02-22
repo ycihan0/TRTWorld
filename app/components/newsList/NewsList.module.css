@@ -11,7 +11,10 @@
 .imageWrapper {
   max-width: 406px;
   width: 100%;
+  height: auto;
 }
+
+
 
 .newsContent {
   padding: 24px;

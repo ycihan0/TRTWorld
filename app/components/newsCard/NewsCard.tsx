@@ -3,7 +3,6 @@ import styles from "./NewsCard.module.css";
 import { News } from "@/types/news";
 import { formatDistanceToNow } from "date-fns";
 
-
 interface TopicFilteredNewsProps {
   topicNews: News[];
   topicTag: string;
@@ -32,17 +31,17 @@ const NewsCard: React.FC<TopicFilteredNewsProps> = ({
                   height={240}
                   className={styles.image}
                 />
-                {news.video && <div className={styles.playButton}>▶</div>}
+                {news.video?.time && <div className={styles.playButton}>▶</div>}
               </div>
               <div className={styles.content}>
                 <span className={styles.time}>
-                {getTimeAgo(news.publishedAt).charAt(0).toUpperCase() +
-                  getTimeAgo(news.publishedAt).slice(1)}
-                 
-                  {news.video.link && (
+                  {getTimeAgo(news.publishedAt).charAt(0).toUpperCase() +
+                    getTimeAgo(news.publishedAt).slice(1)}
+
+                  {news.video?.link != null && (
                     <span className={styles.duration}>
-                  
-                      &nbsp; ▶ &nbsp;{news.video.time}
+                      &nbsp; ▶ &nbsp;
+                      {news.video.time !== null ? news.video.time : ""}
                     </span>
                   )}
                 </span>

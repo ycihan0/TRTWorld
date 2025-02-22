@@ -6,42 +6,31 @@ import Sidebar from "../sidebar/Sidebar";
 import { News } from "@/types/news";
 
 interface MainNewsFeedProps {
+  news: News[];
+  columnists: News[];
   newsList: News[];
 }
-const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
-  const news = newsList
-    .filter((news) => news.author?.name === null)
-    .sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    );
-
-  const columnists = newsList
-    .filter((news) => news.author?.name !== null)
-    .sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    )
-    .slice(0, 2);
-
+const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
+  news,
+  columnists,
+  newsList,
+}) => {
   const getRelatedNews = (mainNews: News, allNews: News[]) => {
     if (!mainNews) return [];
 
     const mainTags = new Set(mainNews.tags);
 
-    return allNews.slice(7)
+    return allNews
+      .slice(7)
       .filter((item) => item.id !== mainNews.id) // Exclude the same news
       .map((item) => {
         const commonTags = item.tags.filter((tag) => mainTags.has(tag)).length;
         return { ...item, relevanceScore: commonTags };
       })
-      .sort((a, b) => b.relevanceScore - a.relevanceScore); 
+      .sort((a, b) => b.relevanceScore - a.relevanceScore);
   };
 
-  
   const relatedNews = news.length > 0 ? getRelatedNews(news[0], news) : [];
-
-
 
   return (
     <>
@@ -61,8 +50,11 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
           <div className={styles.relatedStories}>
             <span>RELATED STORIES</span>
             <div className={styles.relatedStoriesTitles}>
-              {relatedNews.slice(0,3).map((item)=><a href="#" key={item.id}>{item.title}</a>)}
-             
+              {relatedNews.slice(0, 3).map((item) => (
+                <a href="#" key={item.id}>
+                  {item.title}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -92,7 +84,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({ newsList }) => {
             <p>{news[2]?.subtitle}</p>
           </div>
         </div>
-        <Sidebar columnists={columnists} news={news}/>
+        <Sidebar columnists={columnists} news={news} />
       </div>
       <PopularNews newsList={newsList} />
     </>

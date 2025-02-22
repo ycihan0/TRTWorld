@@ -8,6 +8,7 @@ const Advert: React.FC = () => {
       <Image
         src="/images/advert.jpg"
         alt="TRT World Forum"
+        priority 
         width={382}
         height={382}
        />

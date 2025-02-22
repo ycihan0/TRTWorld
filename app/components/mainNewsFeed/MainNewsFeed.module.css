@@ -112,7 +112,7 @@
   .relatedStoriesTitles {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     margin: 0;
     padding: 0;
   }
