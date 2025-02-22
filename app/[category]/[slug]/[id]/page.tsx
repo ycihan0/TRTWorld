@@ -1,13 +1,13 @@
 import { News } from "@/types/news";
 import { notFound } from "next/navigation";
-
-
+import styles from "./NewsDetailPage.module.css";
+import Image from "next/image";
+import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 
 export default async function NewsDetailPage(props: {
   params: { category: string; slug: string; id: string };
-}){
-
-
+}) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
     cache: "no-store",
   });
@@ -17,7 +17,7 @@ export default async function NewsDetailPage(props: {
   }
   const newsList: News[] = await res.json();
 
-  const params = await props.params; 
+  const params = await props.params;
   const category = params.category;
   const slug = params.slug;
   const id = params.id;
@@ -25,13 +25,83 @@ export default async function NewsDetailPage(props: {
   const newsItem = newsList.find(
     (news) => news.category === category && news.slug === slug && news.id === id
   );
- if (!newsItem) {
+  if (!newsItem) {
     notFound();
   }
 
+  const getTimeAgo = (dateString: string): string =>
+    formatDistanceToNow(new Date(dateString), { addSuffix: true }).replace(
+      "about",
+      ""
+    );
+
+    const getRelatedNews = (currentNews: News, allNews: News[]): News[] => {
+      return allNews
+        .filter((news) => news.id !== currentNews.id)
+        .map((news) => ({
+          ...news,
+          tagMatchCount: news.tags.filter((tag) => currentNews.tags.includes(tag))
+            .length, 
+        }))
+        .filter((news) => news.tagMatchCount > 0) 
+        .sort((a, b) => b.tagMatchCount - a.tagMatchCount) 
+        .slice(0, 5); 
+    };
+  
+    const relatedNews = getRelatedNews(newsItem, newsList);
+
   return (
-    <div>
-     {newsItem.subtitle}
+    <div className={styles.container}>
+      <div className={styles.titleContent}>
+        <p className={styles.headTitle}>
+          <span>{newsItem.category} </span> &nbsp;{" "}
+          {getTimeAgo(newsItem.publishedAt).charAt(0).toUpperCase() +
+            getTimeAgo(newsItem.publishedAt).slice(1)}
+        </p>
+        <h1>{newsItem.title}</h1>
+        <p className={styles.description}>{newsItem.subtitle}</p>
+      </div>
+
+      <div className={styles.bodyContainer}>
+        <div className={styles.content}>
+          <Image
+            src={newsItem.image}
+            alt={newsItem.title}
+            width={1008}
+            height={567}
+          />
+
+          <div className={styles.articleContainer}>lala</div>
+        </div>
+
+        <div className={styles.related}>
+          <div>
+            
+            <div className={styles.tagContainer}>
+              {newsItem.tags.map((tag, index) => (
+                <span key={index} className={styles.tag}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            
+            {relatedNews.map((news) => (
+              <Link  href={`/${news.category}/${news.slug}/${news.id}`} key={news.id} className={styles.newsItem}>
+                <Image
+                  src={news.image}
+                  alt={news.title}
+                  className={styles.image}
+                  width={200}
+                  height={200}
+                />
+                <p className={styles.title}>{news.title}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
+
