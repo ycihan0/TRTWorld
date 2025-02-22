@@ -6,12 +6,12 @@ import Sidebar from "../sidebar/Sidebar";
 import { News } from "@/types/news";
 
 interface MainNewsFeedProps {
-  news: News[];
+  firstSevenNews: News[];
   columnists: News[];
   newsList: News[];
 }
 const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
-  news,
+  firstSevenNews,
   columnists,
   newsList,
 }) => {
@@ -21,7 +21,6 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
     const mainTags = new Set(mainNews.tags);
 
     return allNews
-      .slice(7)
       .filter((item) => item.id !== mainNews.id) // Exclude the same news
       .map((item) => {
         const commonTags = item.tags.filter((tag) => mainTags.has(tag)).length;
@@ -30,7 +29,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
       .sort((a, b) => b.relevanceScore - a.relevanceScore);
   };
 
-  const relatedNews = news.length > 0 ? getRelatedNews(news[0], news) : [];
+  const relatedNews = firstSevenNews.length > 0 ? getRelatedNews(firstSevenNews[0], firstSevenNews) : [];
 
   return (
     <>
@@ -39,14 +38,14 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
         <div className={styles.mainNews}>
           <div className={styles.mainImage}>
             <Image
-              src={news[0].image || "/images/TrtWorld.jpg"}
-              alt={news[0].title || "main news image"}
+              src={firstSevenNews[0].image || "/images/TrtWorld.jpg"}
+              alt={firstSevenNews[0].title || "main news image"}
               width={664}
               height={373}
             />
           </div>
-          <span className={styles.tag}>{news[0]?.category}</span>
-          <h1 className={styles.mainTitle}>{news[0]?.title}</h1>
+          <span className={styles.tag}>{firstSevenNews[0]?.category}</span>
+          <h1 className={styles.mainTitle}>{firstSevenNews[0]?.title}</h1>
           <div className={styles.relatedStories}>
             <span>RELATED STORIES</span>
             <div className={styles.relatedStoriesTitles}>
@@ -62,29 +61,29 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
         <div className={styles.sideNews}>
           <div className={styles.newsItem}>
             <Image
-              src={news[1].image || "/images/TrtWorld.jpg"}
-              alt={news[1].title || ""}
+              src={firstSevenNews[1].image || "/images/TrtWorld.jpg"}
+              alt={firstSevenNews[1].title || ""}
               width={296}
               height={166}
             />
-            <h3>{news[1]?.title}</h3>
-            <p>{news[1]?.subtitle}</p>
+            <h3>{firstSevenNews[1]?.title}</h3>
+            <p>{firstSevenNews[1]?.subtitle}</p>
           </div>
           <div
             className={styles.newsItem}
             style={{ marginTop: "12px", border: "none" }}
           >
             <Image
-              src={news[2].image || "/images/TrtWorld.jpg"}
-              alt={news[2].title || ""}
+              src={firstSevenNews[2].image || "/images/TrtWorld.jpg"}
+              alt={firstSevenNews[2].title || ""}
               width={296}
               height={166}
             />
-            <h3>{news[2]?.title}</h3>
-            <p>{news[2]?.subtitle}</p>
+            <h3>{firstSevenNews[2]?.title}</h3>
+            <p>{firstSevenNews[2]?.subtitle}</p>
           </div>
         </div>
-        <Sidebar columnists={columnists} news={news} />
+        <Sidebar columnists={columnists} firstSevenNews={firstSevenNews} />
       </div>
       <PopularNews newsList={newsList} />
     </>

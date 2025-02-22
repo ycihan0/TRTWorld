@@ -76,16 +76,22 @@ export default async function Home() {
     image: "/images/news.jpg",
   };
 
+  const firstSevenNews = news.slice(0, 7);
+
+  const nextThreeNews = news.slice(7, 10);
+
+  const nextFourNews = news.slice(10, 14);
+
   return (
     <>
       <div className={styles.container}>
-        <MainNewsFeed news={news} columnists={columnists} newsList={newsList} />
+        <MainNewsFeed firstSevenNews={firstSevenNews} columnists={columnists} newsList={newsList} />
       </div>
       <NewsCard topicNews={topicNews} topicTag={topicTag} />
       <div className={styles.container}>
         <div className={styles.newSectionContainer}>
           <div className={styles.newsSection}>
-            <NewsList />
+            <NewsList lastestNews={nextThreeNews} />
             <TopStory mainNews={mainNews} sideNews={sideNews} />
             <SingleNews news={newsItem} />
           </div>

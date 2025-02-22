@@ -5,11 +5,11 @@ import { News } from "@/types/news";
 
 interface ColumnistsProps {
   columnists: News[];
-  news: News[];
+  firstSevenNews: News[];
 }
 
-const Sidebar: React.FC<ColumnistsProps> = ({ columnists, news }) => {
-  const extractNews = news.slice(3, 7);
+const Sidebar: React.FC<ColumnistsProps> = ({ columnists, firstSevenNews }) => {
+  const extractNews = firstSevenNews.slice(3, 7);
   return (
     <div className={styles.sidebar}>
       {columnists.map((news) => (
