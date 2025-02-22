@@ -57,23 +57,19 @@
 }
 
 .articleContainer {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  padding: 28px 0;
+  display: flex;
+  justify-content: center;
+  
 }
 
 .article {
-  font-family: "Georgia", serif;
-  font-size: 20px;
-  line-height: 1.8;
-  color: #333;
-  text-align: justify;
-  margin-bottom: 20px;
+  font-size: 18px;
+  font-family: "Noto Serif", serif;
+  color: #000000;
+  max-width: 664px;
+  line-height: 28px;
 }
-
-/* .article::first-letter {
-    font-size: 22px;
-  
-  } */
 
 .related {
   max-width: 296px;
@@ -113,10 +109,67 @@
   margin-bottom: 5px;
 }
 
+.descriptionTitle {
+  font-size: 16px;
+  color: #a0a5aa;
+}
+
+.description {
+  font-size: 14px;
+  font-family: "Noto Serif", serif;
+  color: #63676c;
+  margin-top: 5px;
+}
+
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 24px;
+  border-bottom: solid #e1e6eb 1px;
+}
+
+.tag {
+  background-color: #edf2f7;
+  color: #777c80;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.newsItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: solid #e1e6eb 1px;
+  padding: 24px 0;
+}
+
+.newsItem:last-child {
+  border-bottom: none;
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  font-family: "Noto Serif", serif;
+}
+
+
 @media (max-width: 1200px) {
   .container {
     padding: 0 80px;
   }
+ 
 }
 
 @media (max-width: 980px) {
@@ -129,49 +182,3 @@
     padding: 0 30px;
   }
 }
-
-.tagContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-bottom: 24px;
-    border-bottom: solid #e1e6eb 1px;
-  }
-  
-  .tag {
-    background-color: #EDF2F7;
-    color: #777C80;
-    padding: 6px 10px;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-
-  }
-  
-  .newsItem {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    border-bottom: solid #e1e6eb 1px;
-    padding: 24px 0;
-
-  }
-  
-  .newsItem:last-child {
-    border-bottom: none;
-  }
-  
-  .image {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-  
-  }
-  
-  .title {
-    font-size: 16px;
-    font-weight: bold;
-    color: #000000;
-   
-    font-family: "Noto Serif", serif; 
-  }

@@ -35,20 +35,20 @@ export default async function NewsDetailPage(props: {
       ""
     );
 
-    const getRelatedNews = (currentNews: News, allNews: News[]): News[] => {
-      return allNews
-        .filter((news) => news.id !== currentNews.id)
-        .map((news) => ({
-          ...news,
-          tagMatchCount: news.tags.filter((tag) => currentNews.tags.includes(tag))
-            .length, 
-        }))
-        .filter((news) => news.tagMatchCount > 0) 
-        .sort((a, b) => b.tagMatchCount - a.tagMatchCount) 
-        .slice(0, 5); 
-    };
-  
-    const relatedNews = getRelatedNews(newsItem, newsList);
+  const getRelatedNews = (currentNews: News, allNews: News[]): News[] => {
+    return allNews
+      .filter((news) => news.id !== currentNews.id)
+      .map((news) => ({
+        ...news,
+        tagMatchCount: news.tags.filter((tag) => currentNews.tags.includes(tag))
+          .length,
+      }))
+      .filter((news) => news.tagMatchCount > 0)
+      .sort((a, b) => b.tagMatchCount - a.tagMatchCount)
+      .slice(0, 5);
+  };
+
+  const relatedNews = getRelatedNews(newsItem, newsList);
 
   return (
     <div className={styles.container}>
@@ -70,38 +70,41 @@ export default async function NewsDetailPage(props: {
             width={1008}
             height={567}
           />
+          <p className={styles.descriptionTitle}>REUTERS</p>
+          <p className={styles.description}>{newsItem.description}</p>
 
-          <div className={styles.articleContainer}>lala</div>
+          <div className={styles.articleContainer}>
+            <div className={styles.article}>{newsItem.content}</div>
+          </div>
         </div>
 
         <div className={styles.related}>
-          <div>
-            
-            <div className={styles.tagContainer}>
-              {newsItem.tags.map((tag, index) => (
-                <span key={index} className={styles.tag}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            
-            {relatedNews.map((news) => (
-              <Link  href={`/${news.category}/${news.slug}/${news.id}`} key={news.id} className={styles.newsItem}>
-                <Image
-                  src={news.image}
-                  alt={news.title}
-                  className={styles.image}
-                  width={200}
-                  height={200}
-                />
-                <p className={styles.title}>{news.title}</p>
-              </Link>
+          <div className={styles.tagContainer}>
+            {newsItem.tags.map((tag, index) => (
+              <span key={index} className={styles.tag}>
+                {tag}
+              </span>
             ))}
           </div>
+
+          {relatedNews.map((news) => (
+            <Link
+              href={`/${news.category}/${news.slug}/${news.id}`}
+              key={news.id}
+              className={styles.newsItem}
+            >
+              <Image
+                src={news.image}
+                alt={news.title}
+                className={styles.image}
+                width={200}
+                height={200}
+              />
+              <p className={styles.title}>{news.title}</p>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
   );
 }
-
