@@ -44,28 +44,6 @@ export default async function Home() {
     )
     .slice(0, 2);
 
-  const mainNews = {
-    title: "Is Covid-19 ‘herd immunity’ really working in Pakistan?",
-    description:
-      "Surveys suggest coronavirus has infected so many people, that in some countries, immunity to the deadly virus has been developed. But experts remain sceptical.",
-    image: "/images/covid-pakistan.jpg",
-  };
-
-  const sideNews = [
-    {
-      title: "Valentino Chooses Milan For Unusual Live Show, Not Paris",
-      image: "/images/valentino.jpg",
-    },
-    {
-      title: "Australian PM Morrison: World Needs To Know Origins Of Covid-19",
-      image: "/images/morrison.jpg",
-    },
-    {
-      title: "Why an effective vaccine is just the start of disease control",
-      image: "/images/vaccine.jpg",
-    },
-  ];
-
   const newsItem = {
     category: "MAGAZINE",
     date: "5 DAYS AGO",
@@ -82,18 +60,33 @@ export default async function Home() {
 
   const nextFourNews = news.slice(10, 14);
 
+  const latestSportNews = news
+    .filter((news) => news.category.toUpperCase() === "SPORT")
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    ).slice(0);
+
+
+
   return (
     <>
       <div className={styles.container}>
-        <MainNewsFeed firstSevenNews={firstSevenNews} columnists={columnists} newsList={newsList} />
+        <MainNewsFeed
+          firstSevenNews={firstSevenNews}
+          columnists={columnists}
+          newsList={newsList}
+        />
       </div>
       <NewsCard topicNews={topicNews} topicTag={topicTag} />
       <div className={styles.container}>
         <div className={styles.newSectionContainer}>
           <div className={styles.newsSection}>
             <NewsList lastestNews={nextThreeNews} />
-            <TopStory mainNews={mainNews} sideNews={sideNews} />
+            <TopStory />
+            <NewsList lastestNews={nextFourNews} />
             <SingleNews news={newsItem} />
+            <NewsList lastestNews={latestSportNews} />
           </div>
           <Advert />
         </div>

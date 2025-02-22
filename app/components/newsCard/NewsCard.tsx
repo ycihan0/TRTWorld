@@ -12,10 +12,10 @@ const NewsCard: React.FC<TopicFilteredNewsProps> = ({
   topicNews,
   topicTag,
 }) => {
-  function getTimeAgo(dateString: string): string {
-    return formatDistanceToNow(new Date(dateString), { addSuffix: true });
-  }
 
+  const getTimeAgo = (dateString: string): string => 
+    formatDistanceToNow(new Date(dateString), { addSuffix: true }).replace("about", '');
+  
   return (
     <div className={styles.background}>
       <div className={styles.container}>
