@@ -5,6 +5,7 @@
   padding: 24px 0;
   border-bottom: solid #e1e6eb 1px;
   overflow: hidden;
+  margin-bottom: 24px;
 }
 
 .imageWrapper {
@@ -24,6 +25,7 @@
   font-size: 12px;
   text-transform: uppercase;
   color: #0089cc;
+  padding-top: 24px;
 }
 .date {
   color: #a0a5aa;

@@ -44,16 +44,6 @@ export default async function Home() {
     )
     .slice(0, 2);
 
-  const newsItem = {
-    category: "MAGAZINE",
-    date: "5 DAYS AGO",
-    title: "Centuries of tradition: Why Indonesian fishermen rescue Rohingya",
-    description:
-      "How local fishermen obeyed an ancient custom, defying government orders by doing so.",
-    authors: ["Johanes Hutabarat", "Jennar Kiansantang"],
-    image: "/images/news.jpg",
-  };
-
   const firstSevenNews = news.slice(0, 7);
 
   const nextThreeNews = news.slice(7, 10);
@@ -65,9 +55,16 @@ export default async function Home() {
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    ).slice(0);
+    )
+    .slice(0);
 
-
+  const latestMagazineNews = newsList
+    .filter((news) => news.category.toUpperCase() === "MAGAZINE")
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
+    .slice(0);
 
   return (
     <>
@@ -85,7 +82,7 @@ export default async function Home() {
             <NewsList lastestNews={nextThreeNews} />
             <TopStory />
             <NewsList lastestNews={nextFourNews} />
-            <SingleNews news={newsItem} />
+            <SingleNews categoryNews={latestMagazineNews} />
             <NewsList lastestNews={latestSportNews} />
           </div>
           <Advert />

@@ -43,7 +43,8 @@ export default async function TopStory() {
     }));
 
   return (
-    <div className={styles.featureNews}>
+    <div className={styles.container}>
+      <div className={styles.featureNews}>
       <span className={styles.category}>{topStory}</span>
       <div className={styles.featureContainer}>
         <div className={styles.mainNews}>
@@ -98,8 +99,8 @@ export default async function TopStory() {
                 <Image
                   src={author[0]?.author?.image || "/images/avatar.jpg"}
                   alt=""
-                  width={48}
-                  height={48}
+                  width={80}
+                  height={80}
                 />
               </div>
               <div className={styles.newsContent}>
@@ -111,5 +112,8 @@ export default async function TopStory() {
         </div>
       </div>
     </div>
+
+    </div>
+    
   );
 }
