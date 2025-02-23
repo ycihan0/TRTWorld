@@ -247,11 +247,13 @@
 }
 
 .continueReading {
+  border-top: solid #e1e6eb 1px;
   font-size: 16px;
   cursor: pointer;
   color: #22262A;
   text-transform: uppercase;
   font-weight: bold;
+  padding-top: 24px;
 
 }
 
@@ -285,6 +287,19 @@
   }
   .related {
     display: none;
+  }
+  .content {
+    width: 100%;
+    padding-right: 0;
+  }
+  .titleContent {
+    width: 100%;
+    margin-right: 0;
+   
+  }
+  .article {
+    color: #000000;
+    max-width: 1000px;
   }
 }
 @media (max-width: 500px) {
