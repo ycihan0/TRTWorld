@@ -90,6 +90,7 @@ app/
 ![kapak kopya](https://github.com/user-attachments/assets/e982b632-9cfe-4c70-aba2-7c1d7ee46f8a)
 ## 📱 Responsive Design
 It was designed to be 100% mobile-responsive. The CSS code was carefully written from scratch, based on the Figma design
+
 ![responsive kopya](https://github.com/user-attachments/assets/59948a27-e293-48d1-a0e5-5d19dff0f5fd)
 ## MainNewsFeed Component
 - Component that changes according to the latest news with dynamic incoming data.
@@ -97,6 +98,7 @@ It was designed to be 100% mobile-responsive. The CSS code was carefully written
 - It is directed to the news detail page according to the clicked news.
 - It lists the article authors and some news titles with the SideBar component.
 - It lists the most viewed news on a certain date by sending props to the PopularNews component.
+  
 ![MainNewsFeed kopya](https://github.com/user-attachments/assets/5af94362-6db7-4083-bbf5-8c2c378ed248)
 ## NewsCard Component
 - News received and news listed with specific topic data
@@ -104,11 +106,23 @@ It was designed to be 100% mobile-responsive. The CSS code was carefully written
 - If the news has a video link, a play button is shown
 - Date-fns library shows how long ago the news was published
 - Clicking on the news will take you to the news detail page
+  
 ![NewsCard kopya](https://github.com/user-attachments/assets/29e8c3c1-9e23-4142-a0df-f8e3fc96cf09)
 ## NesList Component
 Reusable component that lists incoming news data. When clicked, it directs to the relevant news.
-![NewsList kopya](https://github.com/user-attachments/assets/4278c351-2154-455a-8615-d8cff55e54e4)
-## NesList Component
 
----
-**© 2025 TRT World News Project.**
+![NewsList kopya](https://github.com/user-attachments/assets/4278c351-2154-455a-8615-d8cff55e54e4)
+## TopStory Component
+- Retrieves news data by sending an API request
+- Filters news according to a certain topic
+- Sorts by publication date
+- Shows those with authors separately
+- If there is video data, the play button appears
+
+![TopStory kopya](https://github.com/user-attachments/assets/9c684a1c-78a8-438d-a69d-f4054206c5cd)
+## TopStory Component
+Component that shows the latest news in a certain category
+
+![SingleNews kopya](https://github.com/user-attachments/assets/c2f0d853-2156-45bc-8e22-19a7e9dd8a6d)
+
+
