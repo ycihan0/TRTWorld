@@ -4,6 +4,7 @@ import styles from "./NewsDetailPage.module.css";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
+import parse from 'html-react-parser';
 
 export default async function NewsDetailPage(props: {
   params: { category: string; slug: string; id: string };
@@ -74,7 +75,7 @@ export default async function NewsDetailPage(props: {
           <p className={styles.description}>{newsItem.description}</p>
 
           <div className={styles.articleContainer}>
-            <div className={styles.article}>{newsItem.content}</div>
+            <div className={styles.article}>{parse(newsItem.content)}</div>
           </div>
         </div>
 
