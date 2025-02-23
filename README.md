@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TRT World Assignment News Website (Next.js)
 
-## Getting Started
+This is a responsive news website built for the TRT World assignment. The application fetches and displays the latest news dynamically using a JSON server. News images are stored on Cloudinary, and the UI is styled based on a given Figma design.
 
-First, run the development server:
+## 🚀 Live Demo
+- 🌐 Live Project👉 https://trt-world.vercel.app/
+- 📡 JSON Server API👉 https://github.com/ycihan0/TRTWorldAPI
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Technologies Used
+- **Next.js** (15.1.7) - Server-side rendering & static generation
+- **React** (19.0.0) - UI library
+- **Date-fns** - Date formatting
+- **HTML React Parser** - Parsing HTML content from JSON
+- **React Icons** - Icons library
+- **Cloudinary** - Hosting images
+- **JSON Server** - Mock API deployed on Render
+- **Custom CSS** - Styled based on the provided Figma file
+
+## 📂 Project Structure
+```
+app/
+ ├── [category]/[slug]/[id]/  # Dynamic News Pages
+ │   ├── NewsDetailPage.module.css 
+ │   ├── page.tsx 
+ │
+ ├── components/  # Reusable Components
+ │   ├── advert/ 
+ │   ├── footer/ 
+ │   ├── header/ 
+ │   ├── mainNewsFeed/ - Component displaying the hero section and the latest main news
+ │   ├── newsCard/ - Component by topic of news cards
+ │   ├── newsList/ - Component containing news lists that can be reused based on incoming data
+ │   ├── popularNews/ - Component that finds the most popular ones in the latest date based on the number of views in the incoming data
+ │   ├── sidebar/ - Component showing sidebar news headlines
+ │   ├── singleNews/ - Reusable component displaying the latest uploaded news for a specific category
+ │   ├── topicHeader/ 
+ │   ├── topStory/ - Component listing news articles based on tags and topics
+ │
+ ├── search/  # Search Page
+ │   ├── page.tsx 
+ │   ├── SearchPage.module.css 
+ │
+ ├── page.tsx - Home page that fetches API data and distributes it across components
+ │
+ ├── layout.tsx - General layout component including a persistent header and footer while dynamically rendering other pages
+ │
+ ├── types/
+ │   ├── news.ts - Type definitions for the news data structure
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📌 Features
+- 📰 List latest news articles
+- 🔍 Search for news
+- 📄 View detailed news pages
+- 🌍 Categories for different news topics
+- 📱 Fully responsive UI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📜 Example Data Structure
+```json
+{
+  "id": "24000535",
+  "title": "Cutting-Edge Computing Advances Drive Research Innovation",
+  "slug": "quantum-computing-ai",
+  "subtitle": "Quantum advancements push AI capabilities further.",
+  "publishedAt": "2025-02-19T12:00:00Z",
+  "newsDate": "2025-02-19T09:45:00Z",
+  "author": {
+    "name": null,
+    "image": null
+  },
+  "description": "Quantum computing is opening new possibilities for AI, making models faster and more efficient.",
+  "source": "TRT World",
+  "tags": [
+    "Quantum Computing",
+    "AI",
+    "Technology"
+  ],
+  "image": "https://res.cloudinary.com/dlg7azrx0/image/upload/v1739800683/TRTWORLD/21470987_0-53-960-540_iettwj.jpg",
+  "category": "Science",
+  "content": "<h1>Quantum Computing Reshaping AI</h1>\n\n<p>Quantum technology is enabling AI models to process data at unprecedented speeds, enhancing their learning capabilities.</p>",
+  "viewCount": 982,
+  "video": {
+    "link": null,
+    "time": null
+  }
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+**© 2025 TRT World News Project.**
