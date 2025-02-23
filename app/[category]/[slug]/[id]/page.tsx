@@ -6,9 +6,12 @@ import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 import parse from "html-react-parser";
 
-export default async function NewsDetailPage(props: {
+
+export default async function NewsDetailPage({params,}: {
   params: { category: string; slug: string; id: string };
 }) {
+
+  
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
     cache: "no-store",
   });
@@ -18,7 +21,7 @@ export default async function NewsDetailPage(props: {
   }
   const newsList: News[] = await res.json();
 
-  const { category, slug, id } = props.params;
+  const { category, slug, id } = await params;
 
   const newsItem = newsList.find(
     (news) => news.category === category && news.slug === slug && news.id === id
@@ -67,6 +70,7 @@ export default async function NewsDetailPage(props: {
             alt={newsItem.title}
             width={1008}
             height={567}
+            priority
           />
           <p className={styles.descriptionTitle}>REUTERS</p>
           <p className={styles.description}>{newsItem.description}</p>
