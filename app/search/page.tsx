@@ -6,13 +6,20 @@ const page: React.FC = () => {
     <div>
       <div className={styles.searchBarBackground}>
         <div className={styles.container}>
-          <input type="text" className={styles.searchBar} />
-          <div className={styles.searchIcon}>
-            <HiOutlineSearch />
+          <div className={styles.searchContainer}>
+            <div className={styles.searchWrapper}>
+              <div className={styles.searchIcon}>
+                <HiOutlineSearch />
+              </div>
+              <input
+                type="text"
+                className={styles.searchBar}
+                placeholder="News, Podcasts and more..."
+              />
+            </div>
           </div>
         </div>
       </div>
-   
     </div>
   );
 };
