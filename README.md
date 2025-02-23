@@ -4,7 +4,9 @@ This is a responsive news website built for the TRT World assignment. The applic
 
 ## 🚀 Live Demo
 - 🌐 Live Project👉 https://trt-world.vercel.app/
-- 📡 JSON Server API👉 https://github.com/ycihan0/TRTWorldAPI
+## 📡 Json Server
+-  JSON Server API👉 https://github.com/ycihan0/TRTWorldAPI
+-  Deployed from render.com👉 https://trtworldapi.onrender.com
 
 ## 🛠️ Technologies Used
 - **Next.js** (15.1.7) 
@@ -55,6 +57,7 @@ app/
 - 📄 View detailed news pages
 - 🌍 Categories for different news topics
 - 📱 Fully responsive UI
+- 💻 Latest NextJs version
 
 ## 📜 Example Data Structure
 ```json
@@ -121,8 +124,35 @@ Reusable component that lists incoming news data. When clicked, it directs to th
 
 ![TopStory kopya](https://github.com/user-attachments/assets/9c684a1c-78a8-438d-a69d-f4054206c5cd)
 ## TopStory Component
-Component that shows the latest news in a certain category
-
+- Component that shows the latest news in a certain category
+- Lists authors with articles in the relevant category
+  
 ![SingleNews kopya](https://github.com/user-attachments/assets/c2f0d853-2156-45bc-8e22-19a7e9dd8a6d)
+## ✨ News Detail Page
+- The endpoint was optimized to enhance search engine visibility and direct traffic to the relevant article.
+- [categor]/[slug]/[id]
+  
+![endpoint kopya](https://github.com/user-attachments/assets/daada1af-6fc7-4f60-9d9b-601dd6302bd9)
+
+- This is the page that shows the details of the news according to the news information received 
+- On the right side, the tags of the news and similar news according to these tags are listed
+
+![NewsDetail kopya](https://github.com/user-attachments/assets/faff481e-7cae-471a-88b1-e7b2e5b9f32c)
+
+The news content that comes as json data is translated and listed with the html-react-parser library. In this way, headlines, videos and content are displayed in the correct format.
+
+![NewsDetail2 kopya](https://github.com/user-attachments/assets/2a194270-8b24-41db-a637-436224442e56)
+
+Related news according to tags are listed in read more. Recommended for those who want to continue reading
+
+![NewsDetail3 kopya](https://github.com/user-attachments/assets/b9535edc-23f8-4cbc-b7b7-c4c6e20d20dc)
+
+## 🔎Search Page
+- json server endpointe searches according to the word entered from the input with the "q" parameter.
+- search is made after the first 3 letters
+- incoming news data is listed
+- when clicked, it is directed to the news detail page
+  
+![search kopya](https://github.com/user-attachments/assets/71e7aa1f-cb7c-4fa6-be6a-acf107091131)
 
 
