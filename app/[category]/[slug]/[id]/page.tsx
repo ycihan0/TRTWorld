@@ -18,10 +18,7 @@ export default async function NewsDetailPage(props: {
   }
   const newsList: News[] = await res.json();
 
-  const params = await props.params;
-  const category = params.category;
-  const slug = params.slug;
-  const id = params.id;
+  const { category, slug, id } = props.params;
 
   const newsItem = newsList.find(
     (news) => news.category === category && news.slug === slug && news.id === id

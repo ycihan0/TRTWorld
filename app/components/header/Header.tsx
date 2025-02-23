@@ -6,6 +6,7 @@ import { TbPointFilled } from "react-icons/tb";
 import { HiOutlineSearch } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { GrClose } from "react-icons/gr";
+import Link from "next/link";
 // import { useState } from "react";
 
 // type DropdownMenu = string | null;
@@ -22,7 +23,9 @@ const Header: React.FC = () => {
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.logo}>
-            TRT <span>WORLD</span>
+            <Link href="/">
+              TRT <span>WORLD</span>
+            </Link>
           </div>
           <nav className={styles.nav}>
             <ul className={styles.menu}>
@@ -65,7 +68,9 @@ const Header: React.FC = () => {
                 LIVE
               </li>
               <li className={styles.menuItemSearch}>
-                <HiOutlineSearch />
+                <Link href="/search">
+                  <HiOutlineSearch />
+                </Link>
               </li>
               <li
                 className={styles.menuItemButton}
