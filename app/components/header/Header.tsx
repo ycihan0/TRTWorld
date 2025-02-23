@@ -7,17 +7,14 @@ import { HiOutlineSearch } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { GrClose } from "react-icons/gr";
 import Link from "next/link";
-// import { useState } from "react";
-
-// type DropdownMenu = string | null;
 
 const Header: React.FC = () => {
-  // const [openDropdown, setOpenDropdown] = useState<DropdownMenu>(null);
-
-  // const toggleDropdown = (menu: DropdownMenu) => {
-  //   setOpenDropdown(openDropdown === menu ? null : menu);
-  // };
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+  const handleToggleSearch = () => {
+    setIsSearch(prev => !prev); 
+  };
   return (
     <>
       <header className={styles.header}>
@@ -31,8 +28,7 @@ const Header: React.FC = () => {
             <ul className={styles.menu}>
               <li
                 className={styles.menuItem}
-                // onMouseEnter={() => toggleDropdown("news")}
-                // onMouseLeave={() => toggleDropdown(null)}
+                
               >
                 NEWS
                 <span>
@@ -41,8 +37,7 @@ const Header: React.FC = () => {
               </li>
               <li
                 className={styles.menuItem}
-                // onMouseEnter={() => toggleDropdown("features")}
-                // onMouseLeave={() => toggleDropdown(null)}
+               
               >
                 FEATURES
                 <span>
@@ -68,7 +63,7 @@ const Header: React.FC = () => {
                 LIVE
               </li>
               <li className={styles.menuItemSearch}>
-                <Link href="/search">
+                <Link href={isSearch ? "/search" : "/"} onClick={handleToggleSearch}>
                   <HiOutlineSearch />
                 </Link>
               </li>
@@ -120,20 +115,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       )}
-      {/* {openDropdown === "news" && (
-        <ul className={styles.dropdown}>
-          <li>LASTEST</li>
-          <li>WORLD</li>
-          <li>POLITICS</li>
-        </ul>
-      )}
-      {openDropdown === "features" && (
-        <ul className={styles.dropdown}>
-          <li>Analysis</li>
-          <li>Opinions</li>
-          <li>Investigations</li>
-        </ul>
-      )} */}
+      
     </>
   );
 };

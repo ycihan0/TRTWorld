@@ -134,7 +134,6 @@ export default async function NewsDetailPage({ params }: PageProps) {
             )}
           </div>
         </div>
-
         <div className={styles.related}>
           <div className={styles.tagContainer}>
             {newsItem.tags.map((tag, index) => (
@@ -143,7 +142,6 @@ export default async function NewsDetailPage({ params }: PageProps) {
               </span>
             ))}
           </div>
-
           {relatedNews.map((news) => (
             <Link
               href={`/${news.category}/${news.slug}/${news.id}`}

@@ -51,6 +51,7 @@ const MainNewsFeed: React.FC<MainNewsFeedProps> = ({
               alt={firstSevenNews[0].title || "main news image"}
               width={664}
               height={373}
+              priority
             />
           </Link>
           <span className={styles.tag}>{firstSevenNews[0]?.category}</span>

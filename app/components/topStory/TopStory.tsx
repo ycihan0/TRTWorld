@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 export default async function TopStory() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/topic`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
     cache: "no-store",
   });
 
@@ -13,9 +13,8 @@ export default async function TopStory() {
     console.error("Error fetching news");
     notFound();
   }
-  const data = await res.json();
-  const topStory: string = data[0].topicName || "";
-  const newsList: News[] = data[0].news || [];
+  const newsList: News[] = await res.json();
+  const topStory: string = "COVID-19";
 
   const author = newsList
     .filter(
@@ -49,9 +48,7 @@ export default async function TopStory() {
         <span className={styles.category}>{topStory}</span>
         <div className={styles.featureContainer}>
           <Link
-            href={`/${mainNews[0].category}/${
-              mainNews[0].slug
-            }/${mainNews[0].id}`}
+            href={`/${mainNews[0].category}/${mainNews[0].slug}/${mainNews[0].id}`}
             className={styles.mainNews}
           >
             {mainNews.length > 0 && (
@@ -74,9 +71,7 @@ export default async function TopStory() {
             {mainNews.length > 0 &&
               mainNews.slice(1, 3).map((news) => (
                 <Link
-                  href={`/${mainNews[0].category}/${
-                    mainNews[0].slug
-                  }/${mainNews[0].id}`}
+                  href={`/${mainNews[0].category}/${mainNews[0].slug}/${mainNews[0].id}`}
                   key={news.id}
                   className={styles.sideNewsItem}
                 >
@@ -106,9 +101,7 @@ export default async function TopStory() {
               ))}
 
             <Link
-              href={`/${author[0].category}/${
-                author[0].slug
-              }/${author[0].id}`}
+              href={`/${author[0].category}/${author[0].slug}/${author[0].id}`}
               className={styles.sideNewsItem}
             >
               <div className={styles.sidebarItem}>
