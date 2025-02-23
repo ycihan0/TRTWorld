@@ -45,6 +45,10 @@
   cursor: pointer;
 }
 
+.result{
+    min-height: 300px;
+}
+
 @media (max-width: 1200px) {
   .container {
     padding: 0 80px;
