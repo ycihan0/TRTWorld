@@ -6,22 +6,30 @@ import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 import parse from "html-react-parser";
 
+async function getNews() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    console.error("Error fetching news");
+    return null; 
+  }
+
+  return res.json() as Promise<News[]>; 
+}
 
 export default async function NewsDetailPage({params,}: {
   params: { category: string; slug: string; id: string };
 }) {
+  const { category, slug, id } =  params;
 
+  console.log(params)
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    console.error("Error fetching news");
-    notFound();
-  }
-  const newsList: News[] = await res.json();
+  const newsList = await getNews();
+  if (!newsList) return notFound();
 
-  const { category, slug, id } = await params;
+ 
 
   const newsItem = newsList.find(
     (news) => news.category === category && news.slug === slug && news.id === id
