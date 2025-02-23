@@ -4,7 +4,7 @@ import styles from "./NewsDetailPage.module.css";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 export default async function NewsDetailPage(props: {
   params: { category: string; slug: string; id: string };
@@ -76,6 +76,56 @@ export default async function NewsDetailPage(props: {
 
           <div className={styles.articleContainer}>
             <div className={styles.article}>{parse(newsItem.content)}</div>
+            {relatedNews.slice(0, 2).map((news) => (
+              <div key={news.id}>
+                <Link
+                  href={`/${news.category}/${news.slug}/${news.id}`}
+                  className={styles.card}
+                >
+                  <div className={styles.cardBackground}></div>
+                  <div className={styles.imageContainer}>
+                    <Image
+                      src={news.image}
+                      alt={news.title}
+                      width={212}
+                      height={120}
+                    />
+                  </div>
+                  <div className={styles.cardContent}>
+                    <span className={styles.readMore}>READ MORE</span>
+                    <span className={styles.cardTitle}>{news.title}</span>
+                  </div>
+                </Link>
+                <div className={styles.article}>{parse(news.content)}</div>
+              </div>
+            ))}
+
+            {relatedNews[2] ? (
+              <>
+                <span className={styles.continueReading}>CONTINUE READİNG</span>
+                <Link
+                  href={`/${relatedNews[2].category}/${relatedNews[2].slug}/${relatedNews[2].id}`}
+                  className={styles.card}
+                >
+                  <div className={styles.cardBackgroundContinue}></div>
+                  <div className={styles.imageContainerContinue}>
+                    <Image
+                      src={relatedNews[2].image}
+                      alt={relatedNews[2].title}
+                      width={212}
+                      height={120}
+                    />
+                  </div>
+                  <div className={styles.cardContentContinue}>
+                    <span className={styles.cardTitle}>
+                      {relatedNews[2].title}
+                    </span>
+                  </div>
+                </Link>
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
 
