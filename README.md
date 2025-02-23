@@ -95,6 +95,10 @@ app/
 It was designed to be 100% mobile-responsive. The CSS code was carefully written from scratch, based on the Figma design
 
 ![responsive kopya](https://github.com/user-attachments/assets/59948a27-e293-48d1-a0e5-5d19dff0f5fd)
+
+## Responsive Header
+![responsive header kopya](https://github.com/user-attachments/assets/1a512568-9124-41c1-8296-f152804b6eaf)
+
 ## MainNewsFeed Component
 - Component that changes according to the latest news with dynamic incoming data.
 - It is shown under 3 related news according to the hero's tags.
