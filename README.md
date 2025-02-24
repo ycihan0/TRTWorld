@@ -27,13 +27,15 @@ app/
  │   ├── page.tsx 
  │
  ├── components/  # Reusable Components
- │   ├── advert/ 
+ │   ├── advert/
+ │   ├── continueReading/
  │   ├── footer/ 
  │   ├── header/ 
  │   ├── mainNewsFeed/ - Component displaying the hero section and the latest main news
  │   ├── newsCard/ - Component by topic of news cards
  │   ├── newsList/ - Component containing news lists that can be reused based on incoming data
  │   ├── popularNews/ - Component that finds the most popular ones in the latest date based on the number of views in the incoming data
+ │   ├── relatedNews/ 
  │   ├── sidebar/ - Component showing sidebar news headlines
  │   ├── singleNews/ - Reusable component displaying the latest uploaded news for a specific category
  │   ├── topicHeader/ 
@@ -127,7 +129,7 @@ Reusable component that lists incoming news data. When clicked, it directs to th
 - If there is video data, the play button appears
 
 ![TopStory kopya](https://github.com/user-attachments/assets/9c684a1c-78a8-438d-a69d-f4054206c5cd)
-## TopStory Component
+## SingleNews Component
 - Component that shows the latest news in a certain category
 - Lists authors with articles in the relevant category
   
