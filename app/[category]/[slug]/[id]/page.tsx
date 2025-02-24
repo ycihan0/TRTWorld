@@ -5,6 +5,9 @@ import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 import parse from "html-react-parser";
+import RelatedNews from "@/app/components/relatedNews/RelatedNews";
+import ContinueReading from "@/app/components/continueReading/ContinueReading";
+
 
 interface PageProps {
   params: Promise<{
@@ -105,60 +108,10 @@ export default async function NewsDetailPage({ params }: PageProps) {
                 <div className={styles.article}>{parse(news.content)}</div>
               </div>
             ))}
-
-            {relatedNews[2] ? (
-              <>
-                <span className={styles.continueReading}>CONTINUE READİNG</span>
-                <Link
-                  href={`/${relatedNews[2].category}/${relatedNews[2].slug}/${relatedNews[2].id}`}
-                  className={styles.card}
-                >
-                  <div className={styles.cardBackgroundContinue}></div>
-                  <div className={styles.imageContainerContinue}>
-                    <Image
-                      src={relatedNews[2].image}
-                      alt={relatedNews[2].title}
-                      width={212}
-                      height={120}
-                    />
-                  </div>
-                  <div className={styles.cardContentContinue}>
-                    <span className={styles.cardTitle}>
-                      {relatedNews[2].title}
-                    </span>
-                  </div>
-                </Link>
-              </>
-            ) : (
-              ""
-            )}
+           <ContinueReading relatedNews={relatedNews[2]}/>
           </div>
-        </div>
-        <div className={styles.related}>
-          <div className={styles.tagContainer}>
-            {newsItem.tags.map((tag, index) => (
-              <span key={index} className={styles.tag}>
-                {tag}
-              </span>
-            ))}
-          </div>
-          {relatedNews.map((news) => (
-            <Link
-              href={`/${news.category}/${news.slug}/${news.id}`}
-              key={news.id}
-              className={styles.newsItem}
-            >
-              <Image
-                src={news.image}
-                alt={news.title}
-                className={styles.image}
-                width={200}
-                height={200}
-              />
-              <p className={styles.title}>{news.title}</p>
-            </Link>
-          ))}
-        </div>
+        </div> 
+        <RelatedNews newsItem={newsItem} relatedNews={relatedNews}/>
       </div>
     </div>
   );

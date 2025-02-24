@@ -8,6 +8,7 @@ import TopStory from "./components/topStory/TopStory";
 import SingleNews from "./components/singleNews/SingleNews";
 import { News } from "@/types/news";
 
+
 export default async function Home() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
     cache: "no-store",

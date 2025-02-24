@@ -11,10 +11,10 @@ import Link from "next/link";
 const Header: React.FC = () => {
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearch, setIsSearch] = useState(false);
-  const handleToggleSearch = () => {
-    setIsSearch(prev => !prev); 
-  };
+  // const [isSearch, setIsSearch] = useState(false);
+  // const handleToggleSearch = () => {
+  //   setIsSearch(prev => !prev); 
+  // };
   return (
     <>
       <header className={styles.header}>
@@ -63,7 +63,7 @@ const Header: React.FC = () => {
                 LIVE
               </li>
               <li className={styles.menuItemSearch}>
-                <Link href={isSearch ? "/search" : "/"} onClick={handleToggleSearch}>
+                <Link href={"/search"}>
                   <HiOutlineSearch />
                 </Link>
               </li>
